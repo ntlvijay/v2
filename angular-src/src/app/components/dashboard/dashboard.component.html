@@ -1,0 +1,125 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="/assets/css/bootstrap-material-design.css">
+</head>
+
+
+<div class="row">
+
+
+
+        <sidebar-left></sidebar-left>
+ <div class="col-md-3">
+ 
+</div> 
+
+
+
+      <div class="hi col-md-6">
+          
+          <div class="page-header">
+              <h2>Dashboard</h2>
+            </div>
+
+
+            <nav class="tabs" >
+                <div class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-questions-tab" data-toggle="tab" href="#nav-questions" role="tab" aria-controls="nav-home" aria-selected="true">Recent Questions</a> 
+                  <a class="nav-item nav-link" id="nav-blogs-tab" data-toggle="tab" href="#nav-blogs" role="tab" aria-controls="nav-profile" aria-selected="false">Recent Blogs</a>    
+                </div>
+              </nav>
+<br>
+
+<div class="tab-content" id="nav-tabContent">
+
+    <div class="tab-pane fade " id="nav-blogs" role="tabpanel" aria-labelledby="nav-blogs-tab">
+         
+      <div  *ngFor='let blog of blogList' class="blog-div row">
+        <aside class="topic-page topic-list blog-list forum-list">
+            <article class="well topic-desc row-fluid btn-group-sm clearfix">
+                    <div class="col-sm-10">
+      
+                        <h4><a [routerLink] = "['/blog', blog._id]">{{blog.heading}}</a></h4>
+                        <div class="blog-meta clearfix">
+                            <small>Written On: {{ blog.modifiedDate | date }}</small>
+                            <small>
+                              Tags: <span *ngFor='let tag of blog.tags'><a [routerLink] = "['/blogs']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} </a></span>
+                            </small>
+                        </div>
+                    
+                    </div>
+          
+              
+            </article>
+            </aside>
+      </div>
+     
+</div>
+
+
+
+    <div class="tab-pane active in" id="nav-questions" role="tabpanel" aria-labelledby="nav-questions-tab">
+          
+            <!-- <h4 style="text-align: center">Latest Questions</h4> -->
+            <div *ngFor='let question of questionList'>
+                <aside class="topic-page topic-list blog-list forum-list">
+                    <article class="well topic-desc row-fluid btn-group-sm clearfix">
+                   
+                            <!-- <div class="col-sm-2 text-center publisher-wrap">
+                                <img src="assets/images/avatars/{{question.avatarName}}" alt="" class="avatar img-circle img-responsive">
+                                <h5><a [routerLink] = "['/users', question.username]"></a>{{question.username}}</h5>
+                                <small class="online">Online</small>
+                            </div> -->
+                            <div class="col-sm-10">
+                                <header class="topic-footer clearfix">
+                                    <ul class="list-inline tags">
+                                        <li class="closed"><a href="#">Unanswered</a></li>
+                                    </ul>
+                              
+                                </header>
+                               
+              
+                                <h4> <a [routerLink] = "['/question', question._id ]" >{{question.title}}</a></h4>
+                                <div class="blog-meta clearfix">
+                                    <small><a href="#">{{question.answers || 0}} Replies &nbsp;</a></small>
+                                    <small>{{ question.modifiedDate | date }}</small>
+                                    <small>&nbsp; in: <span *ngFor='let tag of question.tags'><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} &nbsp;  </a></span></small>
+                                </div>
+                            
+                            </div>
+                  
+                      
+                    </article>
+                    </aside>
+              </div>
+        
+    </div>
+        
+  
+  
+  </div>  
+  </div> 
+
+
+
+
+
+
+<div class="col-md-3">
+
+</div>
+<sidebar-right></sidebar-right>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

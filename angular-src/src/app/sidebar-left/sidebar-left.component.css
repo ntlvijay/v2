@@ -1,0 +1,35 @@
+.sidenav {
+  
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  bottom: 100px;
+    left: 2px;
+    background: rgb(84, 85, 83);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 8px 8px;
+
+    min-height: 50vh;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #2196F3;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #064579;
+  }
+  
+ 

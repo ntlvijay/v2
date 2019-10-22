@@ -1,0 +1,129 @@
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Login Form</title>
+      <link rel="stylesheet" href="/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+      
+      
+      <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+    <body>
+      <div class="main">
+         <section class="signup">
+            <div class="container">
+               <div class="signup-content">
+                  <h2>Update your Profile</h2>
+                  <form class="edit-profile-form" (submit)="submitForm()">
+                     <div class="form-group">
+                        <div class="col-sm-6">
+                           <div class="col-sm-12">
+                              <label for="name">Fullname</label>
+                              <input type="text" class="form-control form-input" [(ngModel)] = "user.name" id="name" name="name" disabled required>
+                           </div>
+                           <div class="col-sm-12">
+                              <label for="email">Prodapt Email Address</label>
+                              <input type="text" class="form-control form-input" [(ngModel)] = "user.email" id="email" name="email" disabled required>
+                           </div>
+                           <div class="col-sm-12">
+                              <label for="username">Username</label>
+                              <input type="text" class="form-control form-input" [(ngModel)] = "user.username" id="username" name="username" disabled required>
+                           </div>
+                        </div>
+                        <div class="col-sm-6">
+                           <div class="col-sm-10"> 
+                              &nbsp;&nbsp;&nbsp;<img src="assets/images/avatars/{{ user.avatarName }}" class="img-responsive img-circle" />
+                           </div>
+                           <div *ngIf="!uploadImg" class="col-sm-12">
+                              <button (click)="uploadImgFunc()" class="btn img-submit btn-sm"><i class="fa fa-camera" aria-hidden="true"></i>
+                              Update Profile Picture</button> &nbsp; &nbsp;
+                           </div>
+                           <div *ngIf="uploadImg" class="col-12 col-sm-12">
+                            <form ngNoForm action="http://{{ serverAddress }}/users/addAvatar" method="post" enctype="multipart/form-data">
+                              <input type="hidden" name="username" [(ngModel)]="user.username" />
+                              <div class="form-control imageUpload" class="col-12 col-sm-12">
+                                <input type="file" name="avatar"/>
+                              </div>
+                              <br />
+                              <div class="form-control imageUpload" class="col-12 col-sm-12">
+                                <button type="submit" class="btn btn-sm img-submit avatar-btn">Update Profile Picture</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="pad-left">
+                  <div class="form-group">
+                     <div class="col-sm-6">
+                        <label for="Account">Account</label>
+                        <input type="text" class="form-control form-input" [(ngModel)] = "user.account" id="Account" name="account">
+                     </div>
+                     <div class="col-sm-6"  style= "text-align: center">
+                        <label for="joinedDate">Active Since</label>
+                        <p class="form-control-static" id="joinedDate" name="joinedDate">{{ user.joinDate | date }}</p>
+                     </div>
+                  </div>
+                  <div class = "col-sm-12"> 
+                     <label for="skills">Skills &nbsp;</label>
+                     <ng-multiselect-dropdown
+                     [placeholder]="'Pick Your Skill'"
+                     [data]="dropdownList"
+                     [(ngModel)]="selectedItems"
+                     [settings]="dropdownSettings"
+                     (onSelect)="onItemSelect($event)"
+                     (onSelectAll)="onSelectAll($event)"
+                     (onDeSelect)="onItemDeSelect($event)"
+                     (onDeSelectAll)="onItemDeSelectAll($event)"
+                     name="multiselect"
+                     >
+                     </ng-multiselect-dropdown>
+                  </div>
+                  <!-- <div class="col-sm-12">
+                     <br><br>
+                      <label for="otherskills">If you didn't find your skills in the dropdown, Please enter your skills separated by comma &nbsp;</label>
+                      <input type="text" class="form-control form-input" id="otherskills" name="otherskills">
+    
+                  </div> -->
+                  <div class="col-sm-10">
+                     <br><br>  
+                     <p class="form-control-static" id="emailNotification" name="emailNotification">If You don't want to receive Email notifications from TechForum,Turn Off the Preferences</p>
+                  </div>
+                  <div class="col-sm-2">
+                      <br><br>
+                     <label class="switch">
+                     <input type="checkbox" [(ngModel)] ="user.Email_Notification" [ngModelOptions]="{standalone: true}" >
+                     <span class="slider round"></span> 
+                     </label> 
+                     <!-- <div class="custom-control custom-switch">
+                         <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                         
+                       </div> -->
+                  </div>
+                </div>
+                <br><br><br><br>
+                <div class="row" style="margin-left:120px">
+                  <div class="col-sm-5 offset-sm-1">
+                      <button type="submit" class="btn form-submit btn-sm">Submit</button>
+                  </div>
+                  <div class="col-sm-5">
+                      <button (click)="cancelForm()" type="button" class="btn form-submit-1 btn-sm">Cancel</button>
+                  </div>
+                </div>  
+                  </form>
+                
+               </div>
+            </div>
+         </section>
+         <!-- <div *ngFor = "let skill of skills">
+            <div *ngFor = "let sub_skill of skill.sub_skills">
+              <p>{{ sub_skill }}</p>    
+            </div>
+            
+            </div> -->
+         <!-- <div *ngFor = "let user_skill of user_skills">
+            <p>true</p>
+            </div> -->
+      </div>
+      <script src="/assets/vendor/jquery/jquery.min.js"></script>
+      <script src="/assets/js/main.js"></script>
+    </body>

@@ -1,0 +1,202 @@
+<!-- <div class="container">
+  <br>
+  <div *ngIf="editRights" class="row editBtn">
+    <button (click)="uploadImgFunc()" class="btn form-submit btn-sm"><i class="fa fa-camera" aria-hidden="true"></i>
+ Upload Avatar</button> &nbsp; &nbsp;
+    <button (click)="editBtnFunc()" class="btn form-submit btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+ Edit Profile</button>
+  </div>
+  <div class="contentManagerBtn" *ngIf="contentManagerBtn">
+    <button (click)="contentManagerBtnFunc()" class="btn form-submit btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+ Make Content Manager</button>
+  </div>
+  <div *ngIf="uploadImg">
+    <form ngNoForm action="http://{{ serverAddress }}/users/addAvatar" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="username" [(ngModel)]="user.username" />
+      <div class="form-control imageUpload">
+        <input type="file" name="avatar"/>
+      </div>
+      <br />
+      <button type="submit" class="btn btn-sm form-submit avatar-btn">Update Avatar</button>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 avatar-div">
+      <img src="assets/images/avatars/{{user.avatarName}}" class="img-responsive img-thumbnail avatar" />
+    </div>
+    <div class="col-sm-9">
+      <div class="page-header">
+        <h2>{{user.name}}</h2>
+        <h5>
+          {{user.about}}
+        </h5>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <h5><span class="profile-key">Username:</span> {{user.username}}</h5>
+        </div>
+        <div class="col-sm-6">
+          <h5><span class="profile-key">Email:</span> {{user.email}}</h5>
+        </div>
+        <div class="col-sm-6">
+          <h5><span class="profile-key">Role:</span> {{user.role}}</h5>
+        </div>
+        <div class="col-sm-6">
+          <h5><span class="profile-key">Join Date:</span> {{user.joinDate | date}}</h5>
+        </div>
+        <div class="col-sm-6">
+          <h5><span class="profile-key">EmpID:</span> {{user.batch}}</h5>
+        </div>
+        <div class="col-sm-6">
+          <h5><span class="profile-key">Branch:</span> {{user.branch}}</h5>
+        </div>
+      </div>
+      <div>
+        <h5 class="profile-key">skills and Frameworks</h5>
+        <p>
+          {{user.skills}}
+        </p>
+      </div>
+    </div>
+  </div>
+    <h3 class="page-header">Profile Links</h3>
+  <div class="profileLinks">
+    <a *ngIf="user.stackoverflowLink" href="{{user.stackoverflowLink}}" target="_blank"><img src="assets/images/stackoverflow.png" title="Stackoverflow Profile"/></a>
+  </div>
+  <div class="control-buttons">
+    <button (click)="showBlogsFunc()" class="btn form-submit"><i class="fa fa-pencil" aria-hidden="true"></i> My Blogs</button>
+    <button (click)="showQuestionsFunc()" class="btn form-submit"><i class="fa fa-question-circle" aria-hidden="true"></i> My Questions</button>
+  </div>
+  <div *ngIf="showBlogs">
+    <div class="page-header">
+        <h3>My Blogs</h3>
+    </div>
+    <div *ngIf="blogDataAvailable">
+      <app-blog-list [blogList] = "blogList" [currentPage]="0"></app-blog-list>
+    </div>
+  </div>
+  <div *ngIf="showQuestions">
+    <div class="page-header">
+        <h3>My Questions</h3>
+    </div>
+    <div *ngIf="questionDataAvailable">
+      <app-question-list [questionList] = "questionList" [currentPage]="0"></app-question-list>
+    </div>
+  </div>
+  </div> -->
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Update Form</title>
+      <link rel="stylesheet" href="/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+      <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+    <body>
+      <div class="main">
+         <section class="signup">
+            <div class="container">
+               <div class="signup-content">
+                  <h2>My Profile</h2>
+                  <form class="edit-profile-form" (submit)="submitForm()">
+                     <div class="form-group">
+                        <div class="col-sm-6">
+                           <div class="col-sm-12">
+                              <label for="name">Fullname</label>
+                              <input type="text" class="form-control form-input" [(ngModel)] = "user.name" id="name" name="name" disabled required>
+                           </div>
+                           <div class="col-sm-12">
+                              <label for="email">Prodapt Email Address</label>
+                              <input type="text" class="form-control form-input" [(ngModel)] = "user.email" id="email" name="email" disabled required>
+                           </div>
+                           <div class="col-sm-12">
+                              <label for="username">Username</label>
+                              <input type="text" class="form-control form-input" [(ngModel)] = "user.username" id="username" name="username" disabled required>
+                           </div>
+                        </div>
+                        <div class="col-sm-6">
+                           <div class="col-sm-12">
+                              <img src="assets/images/avatars/{{ user.avatarName }}" class="img-responsive img-circle avatar" />
+                           </div>
+                           <!-- <div *ngIf="!uploadImg" class="col-sm-12">
+                              <button (click)="uploadImgFunc()" class="btn img-submit btn-sm"><i class="fa fa-camera" aria-hidden="true"></i>
+                              Add/Change Profile Picture</button> &nbsp; &nbsp;
+                           </div>
+                           <div *ngIf="uploadImg" class="col-12 col-sm-12">
+                            <form ngNoForm action="http://{{ serverAddress }}/users/addAvatar" method="post" enctype="multipart/form-data">
+                              <input type="hidden" name="username" [(ngModel)]="user.username" />
+                              <div class="form-control imageUpload" class="col-12 col-sm-12">
+                                <input type="file" name="avatar"/>
+                              </div>
+                              <br />
+                              <div class="form-control imageUpload" class="col-12 col-sm-12">
+                                <button type="submit" class="btn btn-sm img-submit avatar-btn">Update Profile Picture</button>
+                              </div>
+                            </form>
+                          </div> -->
+                        </div>
+                  </div>
+                  <div class="pad-left">
+                  <div class="form-group">
+                     <div class="col-sm-6">
+                        <label for="Account">Account</label>
+                        <input type="text" class="form-control form-input" [(ngModel)] = "user.account" id="account" name="account" disabled>
+                     </div>
+                     <div class="col-sm-6"  style= "text-align: center">
+                        <label for="joinedDate">Active Since</label>
+                        <p class="form-control-static" id="joinedDate" name="joinedDate">{{ user.joinDate | date }}</p>
+                     </div>
+                  </div>
+                  <!-- <div class="form-group">
+                      <div class="col-sm-4">
+                      <label for="batch">Employee ID</label>
+                      <input type="text" class="form-control form-input" [(ngModel)] = "user.batch" id="batch" name="batch" disabled>
+                      </div>
+                      <div class="col-sm-4">
+                      <label for="branch">Branch</label>
+                      <input type="text" class="form-control form-input" [(ngModel)] = "user.branch" id="branch" name="branch" disabled>
+                      </div>
+                      <div class="col-sm-4">
+                      <label for="about">About you</label>
+                      <textarea class="form-control form-input" [(ngModel)]="user.about" id="about" name="about" disabled></textarea>
+                      </div>
+                    </div> -->
+                  <div class = "col-sm-12"> 
+                     <label for="skills">Skills &nbsp;</label>
+                     <input type="text" class="form-control form-input" [(ngModel)] = "user.skills" id="skills" name="skills" disabled>
+                  </div>
+                  <div class="col-sm-10">
+                     <br><br>  
+                     <p class="form-control-static" id="emailNotification" name="emailNotification">Receive Email notifications from TechForum</p>
+                  </div>
+                  <div class="col-sm-2">
+                     <br><br>
+                     <label class="switch">
+                     <input type="checkbox" [(ngModel)] ="user.Email_Notification" [ngModelOptions]="{standalone: true}" disabled>
+                     <span class="slider round"></span>
+                     </label>
+                  </div>
+                  <button (click)="editBtnFunc()" class="btn form-submit btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    Edit Profile</button>
+                  </div>
+                  </form>
+               </div>
+            </div>
+         </section>
+         <!-- <div *ngFor = "let skill of skills">
+            <div *ngFor = "let sub_skill of skill.sub_skills">
+              <p>{{ sub_skill }}</p>    
+            </div>
+            
+            </div> -->
+         <!-- <div *ngFor = "let user_skill of user_skills">
+            <p>true</p>
+            </div> -->
+      </div>
+      <script src="/assets/vendor/jquery/jquery.min.js"></script>
+      <script src="/assets/js/main.js"></script>
+    </body>
+  
+  
+  

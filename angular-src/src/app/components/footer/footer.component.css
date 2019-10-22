@@ -1,0 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+
+
+
+.footer {
+  position: relative;
+  bottom:0;
+
+  height: 100px;
+  clear: both;
+  padding-top: 10px;
+  background-color: #1f3089;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  color: rgb(139, 139, 139);
+  text-align: center;
+
+}
+
+ 
+
+.footer-logo{
+ float: left;
+ left: 5px;
+}
+
+.footer-copyright{
+  float: right;
+}

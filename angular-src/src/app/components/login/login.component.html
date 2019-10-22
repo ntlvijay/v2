@@ -1,0 +1,53 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+  <div class="main">
+
+      <section class="signup">
+        <br>
+          <div class="container">
+              <div class = "col-sm-8">
+              <div class="signup-content">
+                  <h2>TechForum - Login</h2>
+                <form class="login-form" [formGroup]="loginForm" (submit) = "submitLoginForm()">
+                    <!-- style="display:flex; flex-direction: row; justify-content: center; align-items: center" -->
+                  <div class="form-group form-input">
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" [(ngModel)] = "username" formControlName="username" id="username" name="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="TechForum Username" size="20" required>
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">Enter an Username for TechForum</div>
+                  </div>
+                  
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" formControlName="password" [(ngModel)] = "password" name="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" size="20" required>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">Password is required</div>
+                      <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                  </div>
+                    <a id="forgot-password-link" [routerLink] = "['/forgotPassword']" >Forgot Password?</a>
+                  </div>
+                  <br>
+                  <button type="submit" class="btn form-submit"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
+                  
+                </form>
+                
+                  <p class="loginhere">
+                      Don't Have an Account? <a [routerLink] = "['/register']" class="loginhere-link">SignUp Here</a>
+                  </p>
+              </div>
+              </div>
+          </div>
+      </section>
+
+  </div>
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <br>
+</body>

@@ -1,0 +1,124 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Register Form</title>
+  <link rel="stylesheet" href="/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/bootstrap-multiselect.css">
+<script data-main="dist/js/" src="/assets/js/require.min.js"></script>
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css"/>
+<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="main">
+
+      <section class="signup">
+          <div class="container">
+              <div class="signup-content">
+                <h2>TechForum - Register</h2>
+                <form class="register-form" [formGroup]="registerForm" (submit) = "submitRegisterForm()">
+                  
+                  <div class="form-group">
+                      <div class="col-sm-6">
+                    <label for="name">Enter your Full Name:</label>
+                    <input type="text" class="form-control form-input" formControlName="name" required [(ngModel)] = "name" id="name" name="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Enter your Name">
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                      <div *ngIf="f.name.errors.required"> Name is required</div>
+                  </div>
+                  </div>
+
+                      <div class="col-sm-6">
+                    <label for="username">Enter an Username:</label>
+                    <input type="text" class="form-control form-input" formControlName="username" [(ngModel)] = "username" id="username" name="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username" required>
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">Enter an Username for TechForum</div>
+                  </div>
+                  </div>
+                  </div>
+
+
+                  <div class="form-group">
+                      <div class="col-sm-8">
+                    <label for="email">Prodapt Email Address:</label>
+                    <input type="text" class="form-control form-input" formControlName="email" [(ngModel)] = "email" id="user-email" name="email" placeholder="Email Address" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" required>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required">Email is required</div>
+                      <div *ngIf="f.email.errors.pattern">Email must be a valid prodapt email address</div>
+                  </div>
+                  </div>
+                  </div>
+                  
+
+                  <div class="form-group">
+                      <div class="col-sm-6">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control form-input" formControlName="password" id="password" [(ngModel)] = "password"  name="password" placeholder="Enter a password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
+                  
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">Password is required</div>
+                      <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                  </div>
+                </div>
+                  
+                      <div class="col-sm-6">
+                    <label for="password">Confirm Password:</label>
+                    <input type="password" class="form-control form-input" formControlName="confirmPassword" id="confirmpassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" name="confirmpassword" placeholder="Enter your password again" required>
+                  
+                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                      <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                      <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                  </div>
+                      </div>
+                  </div>
+
+
+
+
+
+                  <!-- <div class="form-group"> -->
+                      <div class="col-sm-8">
+                    <label>Skills: &nbsp;</label>
+                    <ng-multiselect-dropdown formControlName="skills"
+                    [placeholder]="'Add Atleast 2 Skills'"
+                    [data]="dropdownList"
+                    [(ngModel)]="selectedItems"
+                    [ngClass]="{ 'is-invalid': submitted && f.skills.errors }"
+                    [settings]="dropdownSettings"
+                    (onSelect)="onItemSelect($event)"
+                     (onSelectAll)="onSelectAll($event)"
+                     (onDeSelect)="onItemDeSelect($event)"
+                     (onDeSelectAll)="onItemDeSelectAll($event)"
+
+                  >
+                  </ng-multiselect-dropdown>
+                  <div *ngIf="submitted && f.skills.errors" class="invalid-feedback">
+                      <div *ngIf="f.skills.errors.required">Please Add your Skills</div>
+                  </div>
+                  </div>
+                  <!-- </div> -->
+                  <br>
+                <br><br><br>
+                  <button type="submit" class="btn form-submit">Register</button>
+                </form>
+                
+                  <p class="loginhere">
+                      Already Have an Account? <a [routerLink] = "['/login']" class="loginhere-link">LOGIN here</a>
+                  </p>
+              </div>
+          </div>
+      </section>
+
+  </div>
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    require(['bootstrap-multiselect'], function(purchase){
+    $('#mySelect').multiselect();
+    });
+    </script>
+</body>

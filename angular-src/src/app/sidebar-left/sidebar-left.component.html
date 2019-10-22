@@ -1,0 +1,36 @@
+<div class="col-md-3 latest sidenav">
+    <button class="btn btn-primary btn-sm" *ngIf="editRights" [routerLink]="['/addFeed']"><i class="fa fa-plus" aria-hidden="true"></i> Add Feed</button>
+    <div class="feed" *ngFor="let feed of feedList">
+      <div class="deleteBtn">
+        <button class="btn btn-danger btn-sm" *ngIf="editRights" (click)="deleteFeed(feed)" [routerLink]="['/addFeed']"> Delete Feed</button>
+      </div>
+      <h3 class="page-header">{{ feed.heading }}</h3>
+      <p [innerHtml]="feed.body | tinyInput"></p>
+      <h6>{{feed.date | date}}</h6>
+    </div>
+
+
+
+
+    <!-- &nbsp; <div class="row">
+        <img src="/assets/images/110.jpg" alt="ad1" style="width:100%">
+      </div>
+     
+      &nbsp; <div class="row">
+        <img src="/assets/images/111.jpg" alt="ad2" style="width:100%">
+      </div>
+      <br>
+      &nbsp; <div class="row">
+        <img src="/assets/images/112.png" alt="ad3" style="width:100%">
+      </div>
+      <br>
+      &nbsp; <div class="row">
+          <img src="/assets/images/103.jpg" alt="ad4" style="width:100%">
+        </div>
+        <br> 
+        &nbsp; <div class="row">
+            <img src="/assets/images/104.jpg" alt="ad5" style="width:100%">
+          </div>
+          <br> -->
+
+  </div>

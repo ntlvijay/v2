@@ -1,0 +1,95 @@
+<!-- <div  *ngFor='let question of questionList' class="blog-div row">
+  <h4><a [routerLink] = "['/question', question._id ]" [innerHtml] = "question.question | tinyInput"></a></h4>
+  <p class='col-sm-3'>Asked by: <a [routerLink] = "['/users', question.username]">{{question.username}}</a></p>
+  <div class="col-sm-3">
+      <p>
+        Tags: <span *ngFor='let tag of question.tags'><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}},  </a></span>
+      </p>
+  </div>
+  <p class="col-sm-3">
+    {{question.answers || 0}} answers
+  </p>
+  <p class="col-sm-3">
+    {{ question.modifiedDate | date }}
+  </p>
+</div> -->
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/bootstrap-material-design.css">
+</head>
+
+
+<sidebar-left></sidebar-left>
+
+<div class="col-md-3">
+      
+</div>
+<div class="col-md-6">
+<div *ngFor='let question of questionList'>
+    <aside class="topic-page topic-list blog-list forum-list">
+        <article class="well btn-group-sm clearfix">
+            <div class="topic-desc row-fluid clearfix">
+                <!-- <div class="col-sm-2 text-center publisher-wrap">
+                    <img src="assets/images/avatars/{{question.avatarName}}" alt="" class="avatar img-circle img-responsive">
+                    <h5><a [routerLink] = "['/users', question.username]"></a>{{question.username}}</h5>
+                    <small class="online">Online</small>
+                </div> -->
+                <div class="col-sm-10">
+                    <header class="topic-footer clearfix">
+                        <ul class="list-inline tags">
+                            <li class="closed"><a href="#">UnAnswered</a></li>
+                        </ul>
+                  
+                    </header>
+                   
+
+                    <h4> <a [routerLink] = "['/question', question._id ]" >{{question.title}}</a></h4>
+                    <div class="blog-meta clearfix">
+                        <small><a href="#">{{question.answers || 0}} Replies &nbsp;</a></small>
+                        <small>{{ question.modifiedDate | date }}</small>
+                        <small>&nbsp; in: <span *ngFor='let tag of question.tags'><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} &nbsp; </a></span></small>
+                    </div>
+                    <!-- <p><a  [innerHtml] = "question.question | tinyInput"></a></p> -->
+                    <!-- <a [routerLink] = "['/question', question._id ]" class="readmore" title="">View the topic →</a> -->
+                </div>
+            </div>
+          
+
+            <div class="topic-meta ">
+                <div class="pull-left">
+                    <a class="btn btn-default btn-fab btn-fab-mini" href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote">
+                        <i class="material-icons">thumb_up</i>
+                    </a>
+                    <a class="btn btn-default btn-fab btn-fab-mini" href="#" data-toggle="tooltip" data-placement="bottom" title="Downvote">
+                        <i class="material-icons">thumb_down</i>
+                    </a>
+                    <a class="btn btn-default btn-fab btn-fab-mini" href="#" data-toggle="tooltip" data-placement="bottom" title="Save">
+                        <i class="material-icons">bookmark_border</i>
+                    </a>
+                </div>
+              
+                <div class="pull-right">
+                    <div class="customshare">
+                        <div class="list">
+                            <div class="btn btn-default btn-fab btn-fab-mini"><i class="material-icons">share</i>
+                                <ul class="list-inline">
+                                    <li><a href="https://www.skype.com" class="tw"><i class="fa fa-skype"></i></a></li>
+                                    <li><a href="https://www.outlook.com" class="fb"><i class="fa fa-envelope"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+          
+        </article>
+        </aside>
+</div>
+</div>
+<div class="col-md-3">
+      
+</div>
+
+<sidebar-right></sidebar-right>

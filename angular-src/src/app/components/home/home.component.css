@@ -1,0 +1,238 @@
+.jumbotron {
+  text-align: center;
+  color: white;
+  margin: 0px;
+  height: 90vh;
+  position: relative;
+  background-image: url("/assets/images/home-banner.jpg");
+  background-size: cover;
+  
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.jumbotron h2 {
+  position: relative;
+  top:28vh;
+}
+
+.jumbotron h4 {
+  position: relative;
+  top:32vh;
+}
+
+
+
+.jumbotron .btn:hover {
+  background-color: #1f3089;
+}
+
+.about {
+  position: relative;
+  top: 35vh;
+  border-radius: 20px;
+}
+
+
+
+.home-content  {
+  text-align: center;
+
+}
+.test{
+  visibility: hidden;
+}
+
+.home-content h4 {
+  padding: 5px 20px;
+}
+
+.home-content .fa {
+  color: #1f3089;
+}
+
+.together-section {
+  text-align: center;
+  background: linear-gradient(rgba(82, 80, 80, 0.6), rgba(82, 80, 80, 0.6)), url("/assets/images/coding2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  padding: 50px 50px;
+  margin: 0px 0px;
+  width: 100%;
+  min-height: 50vh;
+}
+
+.technology-section {
+  text-align: center;
+  margin: 50px 50px 0px 50px;
+}
+
+.editor-section {
+  text-align: center;
+  margin: 50px;
+}
+
+.technology-section h3 {
+  color: #1f3089;
+}
+
+.player-section {
+  text-align: center;
+  margin: 50px;
+}
+
+
+.player-section h3 {
+  color: #1f3089;
+  text-align: center;
+}
+
+.sources-section {
+  text-align: center;
+  margin: 50px;
+}
+
+
+.sources-section h3 {
+  color: #1f3089;
+  text-align: center;
+}
+
+.team-section {
+  text-align: center;
+  margin: 50px;
+}
+
+
+.team-section h3 {
+  color: #1f3089;
+  text-align: center;
+}
+
+.team-section img {
+  height: 25vh;
+}
+
+.team-section a {
+  text-decoration: none;
+  color: #333;
+}
+
+.team {
+  margin: 20px 0px 15px 0px;
+}
+
+.sources {
+  text-align: center;
+  padding: 20px;
+}
+
+.sources a {
+  text-decoration: none;
+  color: #333333;
+}
+
+.sources a:hover{
+  color: #1f3089;
+}
+
+.editor-section h3 {
+  color: #1f3089;
+}
+
+.quote {
+  color: #1f3089;
+}
+
+.stack-images {
+  display: flex;
+  justify-content: center;
+}
+
+.stack-images img {
+  height: 80px;
+  margin: 30px 30px;
+}
+
+p {
+  font-size: 120%;
+}
+
+.home-section {
+  margin: 50px 0px;
+}
+
+.end-div {
+  margin: 50px;
+}
+
+.fa-heart {
+  color: #d50606;
+}
+
+.fa-code {
+  font-weight: bold;
+  font-size: 110%;
+}
+
+.introVideo h3 {
+  text-align: center;
+  color: #1f3089;
+}
+
+.introVideo .col-sm-8 {
+  padding: 30px 5px 100px 5px;
+}
+
+.introVideo h4 {
+  padding: 20px;
+  text-align: center;
+}
+
+.profileLinks {
+  display: flex;
+  justify-content: center;
+}
+
+.profileLinks img {
+  height: 50px;
+  width: 50px;
+  margin: 0px 20px;
+}
+
+.iet-content h3 {
+  color: #dd312f;
+  text-align: center;
+}
+
+.iet-content {
+  text-align: center;
+  margin: 50px 50px 0px 50px;
+}
+
+.iet-content img {
+  height: 250px;
+  width: auto;
+  margin: 0px auto;
+}
+
+.developer-name {
+  text-align: right;
+  position: relative;
+  top: 5px;
+}
+
+
+
+.club-logo {
+  text-align: left;
+}
+
+.club-logo img {
+  height: 50px;
+  width: auto;
+}
+

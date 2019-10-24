@@ -34,7 +34,7 @@ declare var tinymce: any;
   selector: 'editor',
   template: `
   <div class="form-group">
-    <textarea style="height: 40vh" id="body" name="body" class="form-control"></textarea>
+    <textarea style="height: 20vh" id="body" name="body" class="form-control"></textarea>
   </div>`
 })
 export class TinyEditorComponent implements AfterViewInit, OnDestroy {

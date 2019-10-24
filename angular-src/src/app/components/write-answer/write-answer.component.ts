@@ -37,7 +37,7 @@ export class WriteAnswerComponent implements OnInit {
     });
   }
 
-  tinyResponce(tinyBody: String) {
+  tinyResponse(tinyBody: String) {
     this.body = tinyBody;
   }
 

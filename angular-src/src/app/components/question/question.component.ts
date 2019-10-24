@@ -3,7 +3,9 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import { DiscussService } from '../../services/discuss.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-
+import { Skills } from '../../services/skill.model';
+import { SkillsService } from '../../services/skills.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -15,7 +17,13 @@ export class QuestionComponent implements OnInit {
   answerList: any = [];
   questionId: String;
   username: String;
-
+  body: String;
+  skills : Skills[] = [];
+  skillssub: Subscription;
+  user_skills = [];
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -76,5 +84,38 @@ export class QuestionComponent implements OnInit {
   editAnswer(answer) {
     this.router.navigate(['/editAnswer'], { queryParams: { id: answer._id }});
   }
+
+  tinyResponse(tinyBody: String) {
+    this.body = tinyBody;
+  }
+
+  submitAnswer() {
+    if (!this.body) {
+      this.flashMessagesService.show(`Please fill all fields`, { cssClass: 'alert-danger', timeout: 2000 });
+      return false;
+    }
+
+    const answer = {
+      username: JSON.parse(localStorage.getItem('user')).username,
+      body: this.body,
+      questionId: this.questionId,
+      notificationFor: this.question.username,
+      notificationLink: `/question/${ this.questionId }`,
+      notificationMessage: `${ this.question.username } answered your question`,
+    }
+    this.discussService.addAnswer(answer).subscribe(
+      data => {
+        if (data.success) {
+          this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 1500 });
+          this.router.navigate(['/discuss'], { queryParams: { pn: 0 }});
+        } else {
+          this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 1500 });
+        }
+      },
+      err => {
+        this.discussService.handleError(err);
+      });
+  }
+
 
 }

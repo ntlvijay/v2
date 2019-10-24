@@ -5,6 +5,9 @@
 
 
 
+html {
+  scroll-behavior: smooth;
+}
 
 
 .page-header {
@@ -16,6 +19,13 @@
   min-height: 100vh;
   
 }
+
+.well1{
+  border: 1px solid #464444;
+}
+
+
+
 
 .latest h4 {
   padding: 3px 3px 15px 3px;
@@ -94,7 +104,7 @@ button {
 }
 
 .welcome p {
-  margin-bottom: 20px;
+  margin-bottom: 2px;
   color: rgba(255, 255, 255, 0.8)
 }
 
@@ -296,9 +306,7 @@ body.doc_wrapper .doc-widget h4 {
   padding: 0 0 20px;
 }
 
-body.doc_wrapper .doc-widget p {
-  margin-bottom: 30px;
-}
+
 
 body.doc_wrapper .video_wrapper {
   padding: 10px;
@@ -328,15 +336,15 @@ body.doc_wrapper .list-doc li ul li {
 }
 
 body .section .topic-list .well {
-  border: 1px solid #eee;
-  margin-bottom: 10px;
+  border: 1px solid rgb(15, 15, 15);
+ 
   text-decoration: underline;
 }
 
 
 
 body.doc_wrapper .topic-desc {
-  margin-bottom: 30px;
+
   background-color: #f5f7fa;
 }
 
@@ -359,7 +367,7 @@ body.doc_wrapper .section-title small {
 body.doc_wrapper .section-title {
   display: block;
   position: relative;
-  margin-bottom: 60px;
+
   text-transform: capitalize;
 }
 
@@ -393,7 +401,7 @@ body.doc_wrapper .contact-widget a {
 }
 
 body.doc_wrapper .contact-widget p {
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 
 body.doc_wrapper .contact-widget {
@@ -568,7 +576,7 @@ body .topic-list .well {
   padding: 30px 30px 20px;
   cursor: pointer;
   display: block;
-  border-bottom: 1px solid #858383;
+  border-bottom: 1px solid #201f1f;
   box-shadow: none;
   background-color: #fff;
   z-index: 1;
@@ -607,7 +615,7 @@ body .topic-list .well .featured-grade {
 .topic-meta {
   display: block;
   position: relative;
-  margin: 20px 0 30px;
+ 
 }
 
 body .topic-list .panel-heading {
@@ -766,7 +774,7 @@ WIDGETS
 .widget {
   position: relative;
   display: block;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .banner-widget img {
@@ -1029,13 +1037,17 @@ MISC
   padding: 0;
 }
 
-#LoginModal {
-  top: calc(30% - 200px) !important;
+#UserModal {
+  margin-top: 200px;
+}
+
+#AnswerModal {
+  margin-top: 100px;
 }
 
 .login-buttons {
   display: block;
-  margin-bottom: 30px;
+ 
 }
 
 .login-buttons .btn i {
@@ -1369,6 +1381,11 @@ body.home_alt .welcome .pull-left {
   margin-left: 10px;
 }
 
+.col-md-6{
+  background-color:#ffffff;
+}
+
+
 body.home_alt .form-group .form-control {
   color:#989898;
 }
@@ -1380,7 +1397,7 @@ body.home_alt .welcome label.checkbox-inline .checkbox-material .check {
 }
 
 body.home_alt .section .topic-list article {
-  margin-bottom: 30px;
+
   border-style: groove;
  
 }

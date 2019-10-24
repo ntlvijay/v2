@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { DiscussService } from '../../services/discuss.service';
+import { Skills } from '../../services/skill.model';
+import { SkillsService } from '../../services/skills.service';
+import { Subscription } from 'rxjs';
+import { IDropdownSettings} from 'ng-multiselect-dropdown';
+
 
 @Component({
   selector: 'app-edit-question',
@@ -19,16 +24,27 @@ export class EditQuestionComponent implements OnInit {
   deleteBtnText: String;
   username: String;
   initialQuestionAvailable: Boolean;
+  user_skills_Copy :any = [];
+  uploadImg: Boolean;
+  serverAddress: String;
+  skills: Skills[] = [];
+  skillssub: Subscription;
+  user_skills = [];
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+  Notification: Boolean;
 
   constructor(
     private discussService: DiscussService,
     private flashMessagesService: FlashMessagesService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private skillService: SkillsService,
   ) { }
 
   ngOnInit() {
-    this.deleteBtnText = "Delete Question";
+    this.deleteBtnText = 'Delete Question';
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.questionId = params['id'];
 
@@ -40,12 +56,75 @@ export class EditQuestionComponent implements OnInit {
         data => {
           this.initialQuestion = data.question;
           this.initialQuestionAvailable = true;
+          this.title = data.title;
           this.tags = data.tags;
           this.username = data.username;
         }
       )
     });
+
+
+
+    this.skillService.getSkills();
+
+
+    this.skillssub = this.skillService.getPostUpdateListener()
+      .subscribe((skills: Skills[]) => {
+        this.skills = skills;
+        let tmp=[];
+        for(let i=0; i < skills.length; i++) {
+          tmp.push({ item_id: i, item_text: skills[i].skill_name });
+        }
+        this.dropdownList = tmp;
+        console.log(this.dropdownList);
+
+      });
+
+      this.dropdownSettings = {
+        singleSelection: false,
+        idField: 'item_id',
+        textField: 'item_text',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 3,
+        allowSearchFilter: true
+      };
   }
+
+
+  onItemSelect(item: any) {
+    console.log('Select',item);
+     this.user_skills.push(item.item_text);
+     console.log('Select',this.user_skills);
+    //  console.log(this.user.username);
+    console.log(this.selectedItems);
+   }
+ 
+   onItemDeSelect(item:any)
+   {
+     console.log('Testing Deselect');
+     console.log('Deselect',item);
+     var index = this.user_skills.indexOf(item.item_text);
+     console.log('Index',index);
+     this.user_skills.splice(index,1);
+     console.log('DeSelect',this.user_skills);
+ 
+   }
+ 
+   onSelectAll(items: any) {
+     this.user_skills = [];
+     for(var i=0;i<items.length;i++){
+       this.user_skills.push(items[i].item_text);
+     }
+     console.log('onSelectAll',this.user_skills);
+     console.log('onSelectAll',items);
+   }
+   onItemDeSelectAll(items:any){
+     this.user_skills = [];
+   }
+
+
+
 
   tinyResponse(tinyBody: String) {
     this.newQuestion = tinyBody;
@@ -74,7 +153,7 @@ export class EditQuestionComponent implements OnInit {
       title: this.title,
       id: this.questionId,
       question: this.newQuestion,
-      tags: this.tags,
+      tags: this.user_skills,
       username: this.username,
     }
 

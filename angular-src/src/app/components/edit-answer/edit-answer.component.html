@@ -1,25 +1,48 @@
-<div class="container" >
-  <div class="page-header">
-    <h3 [innerHtml] = "question.question | tinyInput"></h3>
-    <div class="row">
-      <p class='col-sm-3'>Asked by <a [routerLink] = "['/users']" [queryParams] = "{ username: question.username }">{{question.username}}</a></p>
-      <div class="col-sm-3">
-          <p>
-            Tags:- <span *ngFor='let tag of question.tags'><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}  </a></span>
-          </p>
-      </div>
-      <p class="col-sm-3">
-        {{question.answers || 0}} answers
-      </p>
-      <p class="col-sm-3">
-        {{ question.modifiedDate | date }}
-      </p>
-    </div>
-  </div>
-  <div style="text-align: right">
-    <button class="btn btn-sm btn-danger" (click)="deleteAnswer()">{{deleteBtnText}}</button>
-  </div>
-  <h4>New Answer</h4>
-  <editor *ngIf="initialBodyAvailable" [setBody]="initialBody" (onEditorContentChange) = "tinyResponce($event)"></editor>
-  <button (click)="editAnswer()" class="btn btn-sm btn-primary submit-btn" type="submit">Submit</button>
+<sidebar-left></sidebar-left>
+
+<div class="col-md-3">
+      
 </div>
+
+
+<div class="col-md-6" >
+    <div class="page-header">
+      <!-- <h3 [innerHtml] = "question.question | tinyInput"></h3> -->
+      <div class="row">
+        <p class='col-sm-3'>Asked by <a [routerLink] = "['/users']" [queryParams] = "{ username: question.username }">{{question.username}}</a></p>
+        <div class="col-sm-3">
+            <p>
+              Tags:- <span *ngFor='let tag of question.tags'><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}  </a></span>
+            </p>
+        </div>
+        <p class="col-sm-3">
+          {{question.answers || 0}} answers
+        </p>
+        <p class="col-sm-3">
+          {{ question.modifiedDate | date }}
+        </p>
+      </div>
+    </div>
+    <div style="text-align: right">
+      <button class="btn btn-sm btn-danger" (click)="deleteAnswer()">{{deleteBtnText}}</button>
+    </div>
+    <h4>New Answer</h4>
+    <editor *ngIf="initialBodyAvailable" [setBody]="initialBody" (onEditorContentChange) = "tinyResponce($event)"></editor>
+    <div style= "text-align: center">
+    <button (click)="editAnswer()" class="btn btn-sm btn-primary submit-btn" style= "width: 120px" type="submit">Submit</button>
+  </div>
+    <br>
+    <br><br>
+    
+    <br>
+  </div>
+
+
+
+
+
+<div class="col-md-3">
+      
+</div>
+
+<sidebar-right></sidebar-right>

@@ -5,10 +5,10 @@
   top: 25px;
   bottom: 100px;
     left: 2px;
-    background: rgb(84, 85, 83);
+    background: rgb(180, 179, 179);
     overflow-x: hidden;
     overflow-y: hidden;
-    padding: 8px 8px;
+
 
     min-height: 50vh;
   }

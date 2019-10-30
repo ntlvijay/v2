@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
     this.blogService.getBlogs(blogInfo).subscribe(
       data => {
         this.blogList = data;
-        this.blogList = this.blogList.slice(0,5);
+        this.blogList = this.blogList.slice(0,10);
       },
       err => {
         this.blogService.handleError(err);
@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
     this.discussService.getQuestions(questionInfo).subscribe(
       data => {
         this.questionList = data;
-        this.questionList = this.questionList.splice(0,5);
+        this.questionList = this.questionList.splice(0,10);
       },
       err => {
         this.discussService.handleError(err);

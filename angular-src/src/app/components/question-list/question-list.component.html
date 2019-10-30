@@ -46,7 +46,7 @@
 
                     <h4> <a [routerLink] = "['/question', question._id ]" >{{question.title}}</a></h4>
                     <div class="blog-meta clearfix">
-                        <small><a href="#">{{question.answers || 0}} Replies &nbsp;</a></small>
+                        <small><a [routerLink] ="['/question', question._id ]">{{question.answers || 0}} Comments &nbsp;</a></small>
                         <small>{{ question.modifiedDate | date }}</small>
                         <small>&nbsp; in: <span *ngFor='let tag of question.tags'><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} &nbsp; </a></span></small>
                     </div>
@@ -56,7 +56,7 @@
             </div>
           
 
-            <div class="topic-meta ">
+            <!-- <div class="topic-meta ">
                 <div class="pull-left">
                     <a class="btn btn-default btn-fab btn-fab-mini" href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote">
                         <i class="material-icons">thumb_up</i>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
              
-            </div>
+            </div> -->
           
         </article>
         </aside>

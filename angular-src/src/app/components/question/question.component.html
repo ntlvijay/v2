@@ -21,8 +21,6 @@ margin: 1 1 1 1;
 
 <div class="col-md-6" style="margin-top: -25px">
 
-
-
 <div class="row">
 
     <aside class="topic-page  forum-list" style="margin: 0">
@@ -56,7 +54,7 @@ margin: 1 1 1 1;
       </header>
 
       <div>
-          <small><a href="#comments-section" id="comments-section">{{question.answers || 0}} Replies &nbsp;</a></small>
+          <small><a href="#comments-section" id="comments-section">{{question.answers || 0}} Comments &nbsp;</a></small>
           <small>{{ question.modifiedDate | date }}</small>
   </div>
   </div>
@@ -69,9 +67,9 @@ margin: 1 1 1 1;
         </div>
     </div><br>
     <div class = "col-sm-12"> <br>
-        <label for="skills">Categories: &nbsp;</label>
+        <label for="skills">Categories: &nbsp;</label><br>
         <span *ngFor = "let tag of question.tags">
-        <button class="btn btn-sm " style="margin-left: -4px"><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></button>
+        <button class="btn btn-sm new" style="margin-left: -4px"><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></button>
         </span>
     </div>
     
@@ -86,13 +84,13 @@ margin: 1 1 1 1;
 
   <div class="topic-meta ">
       <div class="pull-left">
-          <a class="btn btn-default btn-fab btn-fab-mini" href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote">
+          <a href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote">
               <i class="material-icons">thumb_up</i>
-          </a>
-          <a class="btn btn-default btn-fab btn-fab-mini" href="#" data-toggle="tooltip" data-placement="bottom" title="Downvote">
+          </a> &nbsp;
+          <a href="#" data-toggle="tooltip" data-placement="bottom" title="Downvote">
               <i class="material-icons">thumb_down</i>
-          </a>
-          <a class="btn btn-default btn-fab btn-fab-mini" href="#" data-toggle="tooltip" data-placement="bottom" title="Save">
+          </a> &nbsp;
+          <a href="#" data-toggle="tooltip" data-placement="bottom" title="Save">
               <i class="material-icons">bookmark_border</i>
           </a>
       </div>
@@ -101,7 +99,7 @@ margin: 1 1 1 1;
           <div class="customshare">
               <div class="list">
                   <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#AnswerModal" ><i class="fa fa-pencil" aria-hidden="true"></i> Write a Comment</button>
-                  <button class="btn btn-primary btn-sm"><i class="material-icons">share</i>
+                  <button class="btn-sm"><i class="material-icons">share</i>
                       <ul class="list-inline">
                           <li><a href="https://www.skype.com" class="tw"><i class="fa fa-skype"></i></a></li>
                           <li><a href="https://www.outlook.com" class="fb"><i class="fa fa-envelope"></i></a></li>
@@ -145,6 +143,15 @@ margin: 1 1 1 1;
       </form>    
       <div *ngIf="answer.username === this.username" class="editAnsBtn" style="text-align: right" >
             <button class="btn btn-sm btn-primary" (click)="editAnswer(answer)"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+    </div>
+    <div *ngIf="answer.username !== this.username"  style="text-align: left" >
+      <a href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote">
+        <i class="material-icons">thumb_up</i>
+    </a> &nbsp;
+    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Downvote">
+        <i class="material-icons">thumb_down</i>
+    </a> &nbsp;
+    
     </div>
     </article>
    

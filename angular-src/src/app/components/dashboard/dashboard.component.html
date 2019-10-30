@@ -18,13 +18,13 @@
 
       <div class="hi col-md-6">
           
-          <div class="page-header">
+          <!-- <div class="page-header">
               <h2>Dashboard</h2>
-            </div>
-
-              <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active default" id="nav-questions-tab"  data-toggle="tab" href="#nav-questions">Recent Questions
+            </div> -->
+<br>
+              <ul class="nav nav-tabs" >
+                <li class="nav-item in active">
+                    <a class="nav-link in active default" id="nav-questions-tab"  data-toggle="tab" href="#nav-questions">Recent Questions
                         <i class="fa fa-comments"></i>
                     </a>
                 </li>
@@ -49,7 +49,8 @@
                         <div class="blog-meta clearfix">
                             <small>Written On: {{ blog.modifiedDate | date }}</small>
                             <small>
-                              Tags: <span *ngFor='let tag of blog.tags'><a [routerLink] = "['/blogs']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} </a></span>
+                              Tags:<button class="btn btn-sm"><span *ngFor='let tag of blog.tags'><a [routerLink] = "['/blogs']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></span></button>
+                         
                             </small>
                         </div>
                     
@@ -87,9 +88,9 @@
               
                                 <h4> <a [routerLink] = "['/question', question._id ]" >{{question.title}}</a></h4>
                                 <div class="blog-meta clearfix">
-                                    <small><a href="#">{{question.answers || 0}} Replies &nbsp;</a></small>
-                                    <small>{{ question.modifiedDate | date }}</small>
-                                    <small>&nbsp; in: <span *ngFor='let tag of question.tags'><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} &nbsp;  </a></span></small>
+                                    <small><a [routerLink] ="['/question', question._id ]" fragment="comments-section">{{question.answers || 0}} Comments &nbsp;</a></small>
+                                    <small>{{ question.modifiedDate | date }}</small>in: 
+                                    <small><span *ngFor='let tag of question.tags'><button class="btn btn-sm"><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></button></span></small>
                                 </div>
                             
                             </div>

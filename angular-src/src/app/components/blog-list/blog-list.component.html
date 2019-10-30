@@ -18,7 +18,7 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="/assets/css/bootstrap-material-design.css">
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 </head>
 
 
@@ -40,7 +40,6 @@
                 Tags: <span *ngFor='let tag of blog.tags'><a [routerLink] = "['/blogs']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} </a></span>
               </small>
           </div>
-      
       </div>
         
 

@@ -31,6 +31,7 @@ import 'tinymce/plugins/code';
 declare var tinymce: any;
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'editor',
   template: `
   <div class="form-group">
@@ -57,6 +58,7 @@ export class TinyEditorComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     tinymce.init({
       selector: '#body',
+      
       plugins: ['link', 'table', 'paste', 'image', 'fullscreen', 'lists', 'insertdatetime', 'charmap', 'textcolor', 'code', 'codesample'],
       menubar: false,
       toolbar: 'code | codesample | styleselect | fontsizeselect | bullist numlist | bold italic underline removeformat | indent outdent | alignleft aligncenter alignright | forecolor backcolor | subscript superscript | insert table ',
@@ -75,7 +77,8 @@ export class TinyEditorComponent implements AfterViewInit, OnDestroy {
       skin_url: 'assets/skins/lightgray',
       paste_data_images: true,
       relative_urls: false,
-      branding: true,
+      branding: false,
+      // statusbar: false,
       setup: editor => {
         this.editor = editor;
         editor.on('init', () => {

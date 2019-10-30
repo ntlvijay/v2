@@ -9,6 +9,10 @@ html {
   scroll-behavior: smooth;
 }
 
+div {
+  scroll-behavior: smooth;
+}
+
 
 .page-header {
   text-align: center;
@@ -23,9 +27,6 @@ html {
 .well1{
   border: 1px solid #464444;
 }
-
-
-
 
 .latest h4 {
   padding: 3px 3px 15px 3px;
@@ -561,7 +562,6 @@ body.doc_wrapper .main-nav li a {
 TOPIC LIST
 ************************************/
 
-
 .single-topic-meta {
   padding: 15px 0 15px;
 }
@@ -615,7 +615,6 @@ body .topic-list .well .featured-grade {
 .topic-meta {
   display: block;
   position: relative;
- 
 }
 
 body .topic-list .panel-heading {
@@ -675,6 +674,8 @@ body .topic-list .input-group-btn .btn.btn-default {
 body .topic-list .well .topic-meta .btn-default {
   overflow: visible;
   color: #bdbdbd !important;
+  height:5px;
+  width:5px;
 }
 
 body .topic-list .well .btn.btn-fab.btn-fab-mini,
@@ -682,13 +683,12 @@ body .topic-list .well .input-group-btn .btn.btn-fab.btn-fab-mini,
 body .topic-list .well .btn-group-sm .btn.btn-fab,
 body .topic-list .well .btn-group-sm .input-group-btn .btn.btn-fab {
  
-  height: 30px;
-  min-width: 30px;
+  height: 10px !important;
+  min-width: 10px;
   padding: 0;
   margin: 0 2px;
-  width: 30px;
+  width: 10px;
 }
-
 
 .btn-none:hover,
 .btn-none:active,
@@ -748,8 +748,6 @@ body .topic-list .well .btn-group-sm .input-group-btn .btn.btn-fab {
   text-align: center;
 }
 
-
-
 .tags,
 .tags li {
   padding-left: 0 !important;
@@ -759,13 +757,11 @@ body .topic-list .well .btn-group-sm .input-group-btn .btn.btn-fab {
   color: #000000;
   font-weight: 400;
   text-transform: uppercase;
- 
 
   border: 1px solid #eaecef;
   text-decoration: none;
   padding: 5px 12px;
 }
-
 
 /************************************
 WIDGETS
@@ -859,8 +855,6 @@ WIDGETS
   margin: 0;
   padding: 10px 0 0;
 }
-
-
 
 .forum-list .topic-desc h4 a,
 .forum-list .topic-desc h4 {
@@ -1624,9 +1618,7 @@ padding:0px 50px 50px 50px ;
 
 
 
-
-
-
-
-
-
+.new{
+  background-color: #b5ddfd;
+  /* height: 25px; */
+}

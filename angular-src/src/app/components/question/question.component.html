@@ -2,15 +2,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-   
-    <style>
-    .topic-page .forum-list{
-margin: 1 1 1 1;
-}
-
-    </style>
-    
-    </head>
+</head>
       
 <sidebar-left></sidebar-left>
 
@@ -31,8 +23,10 @@ margin: 1 1 1 1;
     <div class="row">
       <div class="col-xs-6">
           <div class="backbtn" style="text-align: left">
-              <a class="btn btn-primary btn-sm" [routerLink] = "['/discuss']" [queryParams] = "{ pn: 0 }" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Questions</a>
+              <a class="btn btn-primary btn-sm" [routerLink] = "['/dashboard']" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Go to Dashboard</a> &nbsp;
+              <a class="btn btn-primary btn-sm" [routerLink] = "['/discuss']" [queryParams] = "{ pn: 0 }" ><i class="fa fa-comments" aria-hidden="true"></i> My Questions</a>
             </div>
+
       </div>
 
       <div clas="col-xs-6" > 
@@ -46,16 +40,17 @@ margin: 1 1 1 1;
 
 
   <div class="col-sm-10">
-      <header class="topic-footer clearfix">
-          <ul class="list-inline tags">
+      <header class="topic-footer clearfix" style="font-size: 12px">
+          <ul class="list-inline tags"> &nbsp;
               <li class="closed"><a href="#">UnAnswered</a></li>
           </ul>
     
       </header>
 
-      <div>
+      <div class="topic-footer clearfix">
           <small><a href="#comments-section" id="comments-section">{{question.answers || 0}} Comments &nbsp;</a></small>
           <small>{{ question.modifiedDate | date }}</small>
+          <small> &nbsp; by <a>{{question.username}}</a></small>
   </div>
   </div>
 
@@ -68,7 +63,7 @@ margin: 1 1 1 1;
     </div><br>
     <div class = "col-sm-12"> <br>
         <label for="skills">Categories: &nbsp;</label><br>
-        <span *ngFor = "let tag of question.tags">
+        <span *ngFor = "let tag of question.tags">&nbsp;
         <button class="btn btn-sm new" style="margin-left: -4px"><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></button>
         </span>
     </div>
@@ -81,34 +76,42 @@ margin: 1 1 1 1;
 
 
 
-
-  <div class="topic-meta ">
+ 
+  <div class="topic-meta">
+      <div class="col-sm-12">
       <div class="pull-left">
-          <a href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote">
-              <i class="material-icons">thumb_up</i>
-          </a> &nbsp;
-          <a href="#" data-toggle="tooltip" data-placement="bottom" title="Downvote">
-              <i class="material-icons">thumb_down</i>
-          </a> &nbsp;
+         
+          <div *ngIf="question.username !== this.username">
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote" >
+                <i class="material-icons" style="font-size: 30px;color: green">mood</i>
+            </a> 
+            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Downvote">
+                <i class="material-icons" style="font-size: 30px;color: rgb(206, 42, 42)">mood_bad</i>
+            </a> &nbsp; 
+          </div>
+          <a href="#" data-toggle="tooltip" data-placement="bottom" title="Share">
+              <i class="material-icons" style="font-size: 25px;color: rgb(226, 196, 60)">share</i>
+          </a>  &nbsp;
           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Save">
-              <i class="material-icons">bookmark_border</i>
+              <i class="material-icons" style="font-size: 25px;color: rgb(226, 196, 60)">bookmark_border</i>
           </a>
+          <button *ngIf="question.username === this.username" class="btn btn-sm btn-success"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Mark as Solved</button>
       </div>
     
       <div class="pull-right">   
           <div class="customshare">
               <div class="list">
                   <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#AnswerModal" ><i class="fa fa-pencil" aria-hidden="true"></i> Write a Comment</button>
-                  <button class="btn-sm"><i class="material-icons">share</i>
+                  <!-- <button class="btn-sm"><i class="material-icons">share</i>
                       <ul class="list-inline">
                           <li><a href="https://www.skype.com" class="tw"><i class="fa fa-skype"></i></a></li>
                           <li><a href="https://www.outlook.com" class="fb"><i class="fa fa-envelope"></i></a></li>
                       </ul>
-                    </button>
+                    </button> -->
               </div>
           </div>
       </div>
-   
+      </div>
   </div>
 
 
@@ -139,20 +142,24 @@ margin: 1 1 1 1;
       <form>
         <div class="col-sm-12">     
         <div [innerHtml]="answer.body | tinyInput" class="answer-body"></div>
-        </div>
-      </form>    
+      </div>
+      </form> 
+      
+      
+      <div class="col-sm-12">     
       <div *ngIf="answer.username === this.username" class="editAnsBtn" style="text-align: right" >
             <button class="btn btn-sm btn-primary" (click)="editAnswer(answer)"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
     </div>
     <div *ngIf="answer.username !== this.username"  style="text-align: left" >
-      <a href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote">
-        <i class="material-icons">thumb_up</i>
-    </a> &nbsp;
+      <a href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote" >
+        <i class="material-icons" style="font-size: 30px;color: green">mood</i>
+    </a> 
     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Downvote">
-        <i class="material-icons">thumb_down</i>
+        <i class="material-icons" style="font-size: 30px;color: rgb(206, 42, 42)">mood_bad</i>
     </a> &nbsp;
     
     </div>
+  </div>
     </article>
    
     </aside>
@@ -192,25 +199,17 @@ margin: 1 1 1 1;
                         <div class="form-group" >
           
                                   <label for="username">Username</label>
-                                  <input type="text" class="form-control form-input" [(ngModel)] = "answer.username" id="username" name="username" disabled required>
-                        
+                                  <input type="text" class="form-control form-input" [(ngModel)] = "answer.username" id="username" name="username" disabled required>              
                         </div>
-
-
-                      
                       </div>
                     </div>
                 </div>
             </div>
-        
-
-
 
 
         </article>
 </aside>
 </div>
-
 </div>
 <div class="col-md-3"></div>
 

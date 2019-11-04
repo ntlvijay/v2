@@ -1,9 +1,10 @@
 
 <div class="blogs container">
-  <div class="page-header">
+  <!-- <div class="page-header">
       <h2>My Questions</h2>
       
-  </div>
+  </div> -->
+  <br>
   <div *ngIf="dataAvailable">
     <app-question-list [questionList] = "questionList" [questionCount]="questionCount" [currentPage]="currentPage" [currentTag]="currentTag"></app-question-list>
   </div>

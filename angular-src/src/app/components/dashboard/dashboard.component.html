@@ -49,7 +49,7 @@
                         <div class="blog-meta clearfix">
                             <small>Written On: {{ blog.modifiedDate | date }}</small>
                             <small>
-                              Tags:<button class="btn btn-sm"><span *ngFor='let tag of blog.tags'><a [routerLink] = "['/blogs']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></span></button>
+                              Tags:<button class="btn btn-sm new"><span *ngFor='let tag of blog.tags'><a [routerLink] = "['/blogs']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></span></button>
                          
                             </small>
                         </div>
@@ -60,6 +60,11 @@
             </article>
             </aside>
       </div>
+
+<div style="text-align: right">
+<a  [routerLink] = "['/blogs']" [queryParams]="{ pn: 0 }">View All Blogs >></a>
+</div>
+
      
 </div>
 
@@ -78,17 +83,18 @@
                                 <small class="online">Online</small>
                             </div> -->
                             <div class="col-sm-10">
-                                <header class="topic-footer clearfix">
+                                <!-- <header class="topic-footer clearfix">
                                     <ul class="list-inline tags">
                                         <li class="closed"><a href="#">Unanswered</a></li>
                                     </ul>
                               
-                                </header>
+                                </header> -->
                                
               
                                 <h4> <a [routerLink] = "['/question', question._id ]" >{{question.title}}</a></h4>
                                 <div class="blog-meta clearfix">
-                                    <small><a [routerLink] ="['/question', question._id ]" fragment="comments-section">{{question.answers || 0}} Comments &nbsp;</a></small>
+                                    <small class="closed ans list-inline tags"><a href="#">Unanswered</a></small>
+                                    <small><a [routerLink] ="['/question', question._id ]" fragment="comments-section">{{question.answers || 0}} Comments</a></small>
                                     <small>{{ question.modifiedDate | date }}</small>in: 
                                     <small><span *ngFor='let tag of question.tags'><button class="btn btn-sm"><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></button></span></small>
                                 </div>
@@ -99,12 +105,19 @@
                     </article>
                     </aside>
               </div>
-        
-    </div>
+              
+              <div style="text-align: right">
+                    <a  [routerLink] = "['/discuss']" [queryParams]="{ pn: 0 }">View All Questions >></a>
+                    </div>
+    
+    
+    
+            </div>
         
   
   
   </div>  
+
   </div> 
 
 

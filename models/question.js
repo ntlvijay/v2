@@ -14,6 +14,16 @@ const QuestionSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+
+
+
+  type: {
+    type: String,
+    default: "UNANSWERED",
+  },
+
+
+
   tags: [],
   username: {
     type: String,
@@ -66,7 +76,7 @@ module.exports.getQuestions = function(pn, tag, callback) {
     Question.
       find().
       sort('-modifiedDate').
-      select('title question username tags modifiedDate answers avatarName').
+      select('title question username tags modifiedDate answers avatarName type').
       skip(pn*10).
       limit(10).
       exec(callback);
@@ -76,7 +86,7 @@ module.exports.getQuestions = function(pn, tag, callback) {
         { tags: new RegExp(tag, "i")},
       ]}).
         sort('-modifiedDate').
-        select('title question username tags modifiedDate answers avatarName').
+        select('title question username tags modifiedDate answers avatarName type').
         skip(pn*10).
         limit(10).
         exec(callback);

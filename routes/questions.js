@@ -100,6 +100,7 @@ router.post('/addQuestion', passport.authenticate('jwt', { session: false }), (r
     tags: req.body.tags,
     title: req.body.title,
     question: req.body.question,
+    type: req.body.type,
   });
   Question.insertQuestion(newQuestion, (err, question) => {
     if (err) {

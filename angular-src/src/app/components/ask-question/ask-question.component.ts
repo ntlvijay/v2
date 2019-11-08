@@ -53,17 +53,16 @@ export class AskQuestionComponent implements OnInit {
         singleSelection: false,
         idField: 'item_id',
         textField: 'item_text',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
+        enableCheckAll: false,
         itemsShowLimit: 3,
-        allowSearchFilter: true
+        allowSearchFilter: false
       };
   }
 
   onItemSelect(item: any) {
-    console.log('Select',item);
+    console.log('Select', item);
      this.user_skills.push(item.item_text);
-     console.log('Select',this.user_skills);
+     console.log('Select', this.user_skills);
     //  console.log(this.user.username);
     console.log(this.selectedItems);
    }
@@ -79,17 +78,17 @@ export class AskQuestionComponent implements OnInit {
  
    }
  
-   onSelectAll(items: any) {
-     this.user_skills = [];
-     for(var i=0;i<items.length;i++){
-       this.user_skills.push(items[i].item_text);
-     }
-     console.log('onSelectAll',this.user_skills);
-     console.log('onSelectAll',items);
-   }
-   onItemDeSelectAll(items:any){
-     this.user_skills = [];
-   }
+  //  onSelectAll(items: any) {
+  //    this.user_skills = [];
+  //    for(var i=0;i<items.length;i++){
+  //      this.user_skills.push(items[i].item_text);
+  //    }
+  //    console.log('onSelectAll',this.user_skills);
+  //    console.log('onSelectAll',items);
+  //  }
+  //  onItemDeSelectAll(items:any){
+  //    this.user_skills = [];
+  //  }
 
   tinyResponse(tinyBody: String) {
     this.question = tinyBody;

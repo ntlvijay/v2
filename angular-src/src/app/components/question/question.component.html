@@ -29,11 +29,11 @@
 
       </div>
 
-      <div clas="col-xs-6" > 
+      <!-- <div clas="col-xs-6" > 
         <div *ngIf="editable" class="editbtn" style="text-align: center"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a class="btn btn-primary btn-sm" [routerLink]="['/editQuestion']" [queryParams] = "{ id: question._id }"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
       </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -42,7 +42,7 @@
   <div class="col-sm-10">
       <header class="topic-footer clearfix" style="font-size: 12px">
           <ul class="list-inline tags"> &nbsp;
-              <li class="closed"><a href="#">UnAnswered</a></li>
+              <li class="closed"><a href="#">{{question.type}}</a></li>
           </ul>
     
       </header>
@@ -81,27 +81,63 @@
       <div class="col-sm-12">
       <div class="pull-left">
          
-          <div *ngIf="question.username !== this.username">
+          <div  *ngIf="question.username !== this.username">
               <a href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote" >
-                <i class="material-icons" style="font-size: 30px;color: green">mood</i>
-            </a> 
-            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Downvote">
-                <i class="material-icons" style="font-size: 30px;color: rgb(206, 42, 42)">mood_bad</i>
+                <i class="material-icons" style="font-size: 25px;color: green">thumb_up_alt</i>
             </a> &nbsp; 
-          </div>
+            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Downvote">
+                <i class="material-icons" style="font-size: 25px;color: rgb(206, 42, 42)">thumb_down_alt</i>
+            </a> &nbsp; 
+        
+
+
           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Share">
               <i class="material-icons" style="font-size: 25px;color: rgb(226, 196, 60)">share</i>
           </a>  &nbsp;
           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Save">
               <i class="material-icons" style="font-size: 25px;color: rgb(226, 196, 60)">bookmark_border</i>
           </a>
-          <button *ngIf="question.username === this.username" class="btn btn-sm btn-success"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Mark as Solved</button>
+    
+
+
+        </div>
+
+
+        <div  *ngIf="question.username == this.username">
+       
+        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Share">
+            <i class="material-icons" style="font-size: 25px;color: rgb(226, 196, 60)">share</i>
+        </a>  &nbsp;
+        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Save">
+            <i class="material-icons" style="font-size: 25px;color: rgb(226, 196, 60)">bookmark_border</i>
+        </a>
+  
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
     
       <div class="pull-right">   
           <div class="customshare">
               <div class="list">
-                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#AnswerModal" ><i class="fa fa-pencil" aria-hidden="true"></i> Write a Comment</button>
+
+                  
+                   
+                  <button *ngIf="editable"  class="btn btn-primary editbtn btn-sm" [routerLink]="['/editQuestion']" [queryParams] = "{ id: question._id }"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                  <button style="margin-left: 2px" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#AnswerModal" ><i class="fa fa-pencil" aria-hidden="true"></i> Write a Comment</button>
                   <!-- <button class="btn-sm"><i class="material-icons">share</i>
                       <ul class="list-inline">
                           <li><a href="https://www.skype.com" class="tw"><i class="fa fa-skype"></i></a></li>
@@ -152,13 +188,21 @@
     </div>
     <div *ngIf="answer.username !== this.username"  style="text-align: left" >
       <a href="#" data-toggle="tooltip" data-placement="bottom" title="Upvote" >
-        <i class="material-icons" style="font-size: 30px;color: green">mood</i>
-    </a> 
+        <i class="material-icons" style="font-size: 20px;color: green">thumb_up_alt</i> 
+    </a> &nbsp;
     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Downvote">
-        <i class="material-icons" style="font-size: 30px;color: rgb(206, 42, 42)">mood_bad</i>
+        <i class="material-icons" style="font-size: 20px;color: red">thumb_down_alt</i>
     </a> &nbsp;
     
-    </div>
+    <!-- <button *ngIf="question.username === this.username" class="btn btn-sm btn-success"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Mark as Solved</button> -->
+    
+    <a style="text-align: right" *ngIf="question.username === this.username" href="#" data-toggle="tooltip" data-placement="bottom" title="Mark as Correct Answer">
+      <i class="material-icons" style="font-size: 30px;color: darkgreen;">done_outline</i>
+    </a> &nbsp;
+  
+  
+  
+  </div>
   </div>
     </article>
    

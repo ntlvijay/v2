@@ -569,18 +569,20 @@ body .topic-list .panel-title a small {
   line-height: 1 !important;
   margin: 0 !important;
   padding-bottom: 0 !important;
-  padding-right: 2px;
+
 }
 
 .widget .panel small:after,
 body .topic-list .panel-title a small:after {
   content: "|";
-  padding-left: 5px
+padding-right: 2px;
 }
 
 .widget .panel small:last-child:after,
 body .topic-list .panel-title a small:last-child:after {
-  content: ""
+  content: "";
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 body .topic-list .panel-default,
@@ -839,6 +841,8 @@ WIDGETS
   margin: 0;
   padding-bottom: 0;
   padding-right: 2px;
+  padding-left: 2px;
+ 
 }
 
 .blog-meta small a {
@@ -847,7 +851,8 @@ WIDGETS
 
 .blog-meta small::after {
   content: "|";
-  padding-left: 5px;
+  padding-right: -2px!important;
+  padding-left: 2px;
 }
 
 .blog-meta small:last-child:after {
@@ -1617,8 +1622,8 @@ color: #1f3089 !important;
  .btn-sm{
    height: 25px;
    text-align: center;
-   margin-left: 1px;
-   margin-right: 1px;
+   margin-left: 3px;
+   margin-right: 3px;
    padding: 1px;
    background-color: #b5ddfd;
   align-items: center;

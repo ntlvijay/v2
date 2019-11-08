@@ -29,31 +29,31 @@
 <div *ngFor='let question of questionList'>
     <aside class="topic-page topic-list blog-list forum-list">
         <article class="well btn-group-sm clearfix">
-            <div class="topic-desc row-fluid clearfix">
+         
                 <!-- <div class="col-sm-2 text-center publisher-wrap">
                     <img src="assets/images/avatars/{{question.avatarName}}" alt="" class="avatar img-circle img-responsive">
                     <h5><a [routerLink] = "['/users', question.username]"></a>{{question.username}}</h5>
                     <small class="online">Online</small>
                 </div> -->
                 <div class="col-sm-10">
-                    <header class="topic-footer clearfix">
-                        <ul class="list-inline tags">
-                            <li class="closed"><a href="#">UnAnswered</a></li>
-                        </ul>
-                  
-                    </header>
-                   
-
-                    <h4> <a [routerLink] = "['/question', question._id ]" >{{question.title}}</a></h4>
-                    <div class="blog-meta clearfix">
-                        <small><a [routerLink] ="['/question', question._id ]">{{question.answers || 0}} Comments &nbsp;</a></small>
-                        <small>{{ question.modifiedDate | date }}</small>
-                        <small>&nbsp; in: <span *ngFor='let tag of question.tags'><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} &nbsp; </a></span></small>
+                        <!-- <header class="topic-footer clearfix">
+                            <ul class="list-inline tags">
+                                <li class="closed"><a href="#">Unanswered</a></li>
+                            </ul>
+                      
+                        </header> -->
+                       
+      
+                        <h4> <a style="color: black!important;" [routerLink] = "['/question', question._id ]" >{{question.title}}</a></h4>
+                        <div class="blog-meta clearfix">
+                            <small class="closed ans list-inline tags"><a href="#">{{question.type}}</a></small>
+                            <small><a [routerLink] ="['/question', question._id ]" fragment="comments-section">{{question.answers || 0}} Comments</a></small>
+                            <small>{{ question.modifiedDate | date }}</small>in: 
+                            <small><span *ngFor='let tag of question.tags'><button class="btn btn-sm"><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></button></span></small>
+                        </div>
+                    
                     </div>
-                    <!-- <p><a  [innerHtml] = "question.question | tinyInput"></a></p> -->
-                    <!-- <a [routerLink] = "['/question', question._id ]" class="readmore" title="">View the topic →</a> -->
-                </div>
-            </div>
+           
           
 
             <!-- <div class="topic-meta ">

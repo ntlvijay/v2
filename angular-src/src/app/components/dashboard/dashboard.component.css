@@ -1545,6 +1545,14 @@ RESPONSIVE
   border-color: #E64A19 !important;
 }
 
+a:hover{
+ text-decoration: underline!important;  
+ color: blue !important;
+}
+a:active {
+   text-decoration: underline!important;
+  }
+
 
 
 
@@ -1574,6 +1582,11 @@ padding:0px 50px 50px 50px ;
   border-radius:5px;
   position:relative;
 }
+
+.tabs a:hover{
+  text-decoration: underline!important;  
+  color: rgb(255, 255, 255) !important;
+ }
 
 .tabs a{
   text-decoration:none;

@@ -18,7 +18,7 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/bootstrap-material-design.min.css">
 </head>
 
 
@@ -28,7 +28,39 @@
     
 </div>
 <div class="col-md-6">
-  <div  *ngFor='let blog of blogList' class="blog-div row">
+  
+  <div *ngFor='let blog of blogList'>
+    <aside class="topic-page topic-list blog-list forum-list">
+        <article class="well btn-group-sm clearfix">
+  
+                <div class="col-sm-10">
+  
+                        <h4> <a style="color: black!important;" [routerLink] = "['/blog', blog._id]" >{{blog.heading}}</a></h4>
+                        <div class="blog-meta clearfix">
+                           
+                            <!-- <small><a [routerLink] ="['/blog', blog._id]" fragment="comments-section">{{question.answers || 0}} Comments</a></small> -->
+                            <small>Written On: {{ blog.modifiedDate | date }}</small>in: 
+                            <small><button class="btn btn-sm new"><span *ngFor='let tag of blog.tags'><a [routerLink] = "['/blogs']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} </a></span></button></small>
+                        </div>
+                    
+                    </div>
+        </article>
+        </aside>
+  </div>  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- <div  *ngFor='let blog of blogList' class="blog-div row">
   <aside class="topic-page topic-list blog-list forum-list">
       <article class="well btn-group-sm clearfix">
         <div class="col-sm-10">
@@ -73,10 +105,14 @@
         
       </article>
       </aside>
-</div>
+</div> -->
 </div>
 <div class="col-md-3">
     
 </div>
 
 <sidebar-right></sidebar-right>
+
+
+
+

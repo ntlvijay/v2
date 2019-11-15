@@ -1,7 +1,8 @@
 <div class="blogs container">
-  <div class="page-header">
+  <br>
+  <!-- <div class="page-header">
       <h2>Recent Blogs</h2>
-  </div>
+  </div> -->
   <div *ngIf="dataAvailable">
     <app-blog-list [blogList] = "blogList" [blogCount]="blogCount" [currentPage]="currentPage" [currentTag]="currentTag"></app-blog-list>
   </div>

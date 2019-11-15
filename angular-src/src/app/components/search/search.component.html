@@ -1,3 +1,93 @@
+<!-- 
+  <div class="row">
+  <sidebar-left></sidebar-left>
+   <div class="col-md-3">
+   
+  </div> 
+        <div class="hi col-md-6">
+
+            <h2 align="center">Search results for - " {{searchString}} "</h2>
+  <br>
+                <ul class="nav nav-tabs" >
+                  <li class="nav-item in active">
+                      <a class="nav-link in active default" id="nav-questions-tab"  data-toggle="tab" href="#nav-questions">Search in Questions
+                          <i class="fa fa-comments"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" id="nav-blogs-tab" data-toggle="tab" href="#nav-blogs">Search in Blogs
+                        <i class="fa fa-pencil"></i>
+                      </a>
+                  </li>
+              </ul>
+  <br>
+  
+  <div class="tab-content" id="nav-tabContent">
+  
+      <div class="tab-pane fade " id="nav-blogs" role="tabpanel" aria-labelledby="nav-blogs-tab">
+           
+
+          <div *ngIf="search === 'blogs'">
+              <h3 style="text-align: center">Blogs</h3>
+              <div *ngIf="dataAvailable">
+                <app-blog-list [blogList] = "searchList" [blogCount]="searchCount" [currentPage]="currentPage"></app-blog-list>
+              </div>
+            </div>
+              
+      </div>
+  
+  
+  
+      <div class="tab-pane active in" id="nav-questions" role="tabpanel" aria-labelledby="nav-questions-tab">
+          
+        
+          <div *ngIf="search === 'questions'">
+              <h3 style="text-align: center" >Questions</h3>
+              <div *ngIf="dataAvailable">
+                <app-question-list [questionList] = "searchList" [questionCount]="searchCount" [currentPage]="currentPage"></app-question-list>
+              </div>
+            </div>
+
+      </div>
+          
+    
+    
+    </div>  
+    
+    <div class="btn-controls" align="center">
+        <button  [ngClass]="prevBtn()" (click)="prevPage()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Prev</button>
+        <span>Page {{currentPage}}</span>
+        <button  [ngClass]="nextBtn()" (click)="nextPage()">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+    
+  </div> 
+  
+  
+  
+  
+  
+  
+  <div class="col-md-3">
+  
+  </div>
+  <sidebar-right></sidebar-right>
+  
+  </div> -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
 <div class="blogs container">
   <div class="page-header row"><div class="col-sm-3"></div>
     <div class="col-sm-6" align="center">

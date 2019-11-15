@@ -101,7 +101,7 @@ module.exports.searchQuestion = function(searchObj, callback) {
       { tags: new RegExp(searchObj.searchString, "i")},
     ]}).
     sort('-modifiedDate').
-    select('title question username tags modifiedDate answers avatarName').
+    select('title question username type tags modifiedDate answers avatarName').
     skip(searchObj.pn*10).
     limit(10).
     exec(callback);

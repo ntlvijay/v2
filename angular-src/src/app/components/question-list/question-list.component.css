@@ -1633,3 +1633,13 @@ color: #1f3089 !important;
  .closed{
    color: white;
  }
+
+
+ a:hover{
+  text-decoration: underline!important;  
+  color: blue !important;
+ }
+ a:active {
+    text-decoration: underline!important;
+   }
+ 

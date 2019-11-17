@@ -6,6 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Skills } from '../../services/skill.model';
 import { SkillsService } from '../../services/skills.service';
 import { Subscription } from 'rxjs';
+declare var jQuery:any;
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -14,6 +15,7 @@ import { Subscription } from 'rxjs';
 export class QuestionComponent implements OnInit {
   editable: Boolean;
   question: any = [];
+  
   answerList: any = [];
   questionId: String;
   username: String;
@@ -90,6 +92,7 @@ export class QuestionComponent implements OnInit {
   }
 
   submitAnswer() {
+    jQuery('#AnswerModal').modal('hide');
     if (!this.body) {
       this.flashMessagesService.show(`Please fill all fields`, { cssClass: 'alert-danger', timeout: 2000 });
       return false;
@@ -103,11 +106,11 @@ export class QuestionComponent implements OnInit {
       notificationLink: `/question/${ this.questionId }`,
       notificationMessage: `${ this.question.username } answered your question`,
     }
+    this.answerList.unshift(answer);
     this.discussService.addAnswer(answer).subscribe(
       data => {
         if (data.success) {
           this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 1500 });
-          this.router.navigate(['/discuss'], { queryParams: { pn: 0 }});
         } else {
           this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 1500 });
         }

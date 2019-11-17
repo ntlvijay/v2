@@ -55,7 +55,8 @@ export class AskQuestionComponent implements OnInit {
         textField: 'item_text',
         enableCheckAll: false,
         itemsShowLimit: 3,
-        allowSearchFilter: false
+        allowSearchFilter: false,
+        limitSelection: 3
       };
   }
 

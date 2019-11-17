@@ -1585,7 +1585,9 @@ RESPONSIVE
 /* OTHERS COLOR */
 
 .forum-list .closed a {
-  color: #ffffff;
+  font-size: 11px !important;
+  padding: 3px;
+  color: #ffffff !important;
   background-color: #D32F2F !important;
   border-color: #D32F2F !important;
 }

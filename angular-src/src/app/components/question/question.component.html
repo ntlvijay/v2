@@ -197,7 +197,7 @@
     <!-- <button *ngIf="question.username === this.username" class="btn btn-sm btn-success"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Mark as Solved</button> -->
     
     <a style="text-align: right" *ngIf="question.username === this.username" href="#" data-toggle="tooltip" data-placement="bottom" title="Mark as Correct Answer">
-      <i class="material-icons" style="font-size: 30px;color: darkgreen;">done_outline</i>
+      <i class="material-icons" style="font-size: 20px;color: darkgreen;">done_outline</i>
     </a> &nbsp;
   
   
@@ -211,11 +211,11 @@
 
         <!-- Modal -->
         <div id="AnswerModal" class="modal fade" role="dialog">
-            <div class="modal-dialog ">
+            <div class="modal-dialog " >
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close" data-dismiss="modal" data-target="#modal">&times;</button>
                         <h4 class="modal-title">Post your Comment here</h4>
                     </div>
                     <div class="modal-body">
@@ -235,7 +235,7 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close" data-dismiss="modal" >&times;</button>
                         <h4 class="modal-title">About User</h4>
                     </div>
                     <div class="modal-body">

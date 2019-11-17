@@ -44,7 +44,7 @@
                         </header> -->
                        
       
-                        <h4> <a style="color: black!important;" [routerLink] = "['/question', question._id ]" >{{question.title}}</a></h4>
+                        <h4> <a style="color: black;" [routerLink] = "['/question', question._id ]" >{{question.title}}</a></h4>
                         <div class="blog-meta clearfix">
                             <small class="closed ans list-inline tags"><a href="#">{{question.type}}</a></small>
                             <small><a [routerLink] ="['/question', question._id ]" fragment="comments-section">{{question.answers || 0}} Comments</a></small>

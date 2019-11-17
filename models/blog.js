@@ -96,12 +96,15 @@ module.exports.searchBlog = function(searchObj, callback) {
         heading: new RegExp(searchObj.searchString, "i")
       },
       {
+        body: new RegExp(searchObj.searchString, "i")
+      },
+      {
         tags: new RegExp(searchObj.searchString, "i")
       },
     ]
   }).
   sort('-modifiedDate').
-  select('heading username tags modifiedDate').
+  select('heading username tags body modifiedDate').
   skip(searchObj.pn * 10).
   limit(10).
   exec(callback);

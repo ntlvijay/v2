@@ -17,6 +17,11 @@
 }
 
 
+.btn1{
+  background-color: rgb(42, 78, 177)!important;
+}
+
+
 
 .feed h3 {
   text-align: center;
@@ -1619,16 +1624,7 @@ color: #1f3089 !important;
 }
  */
 
- .btn-sm{
-   height: 25px;
-   text-align: center;
-   margin-left: 3px;
-   margin-right: 3px;
-   padding: 1px;
-   background-color: #b5ddfd;
-  align-items: center;
-  justify-content: center;
- }
+
 
  .closed{
    color: white;

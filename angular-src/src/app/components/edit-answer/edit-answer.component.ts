@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DiscussService } from '../../services/discuss.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-
+import { Skills } from '../../services/skill.model';
+import { SkillsService } from '../../services/skills.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-edit-answer',
   templateUrl: './edit-answer.component.html',
@@ -16,7 +18,24 @@ export class EditAnswerComponent implements OnInit {
   question: any = [];
   deleteBtnText: String;
   initialBodyAvailable: Boolean
+  initialQuestionAvailable: Boolean;
+  user_skills_Copy :any = [];
+  uploadImg: Boolean;
+  serverAddress: String;
+  skills: Skills[] = [];
+  skillssub: Subscription;
+  user_skills = [];
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+  Notification: Boolean;
+  newQuestion: String;
+  tags: String[] = [];
+  tag: string;
+  title: string;
+  initialQuestion: String;
 
+  username: String;
   constructor(
     private discussService: DiscussService,
     private flashMessagesService: FlashMessagesService,
@@ -67,6 +86,13 @@ export class EditAnswerComponent implements OnInit {
       this.flashMessagesService.show(`The answer cannot be blank.`, { cssClass: 'alert-danger', timeout: 2000 });
       return false;
     }
+    const question = {
+      title: this.title,
+      id: this.questionId,
+      question: this.newQuestion,
+      tags: this.user_skills,
+      username: this.username,
+    }
     const answer = {
       id: this.answerId,
       body: this.body,
@@ -77,7 +103,7 @@ export class EditAnswerComponent implements OnInit {
       data => {
         if(data.success) {
           this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 1500 });
-          this.router.navigate(['/discuss'], { queryParams: { pn: 0 }});
+          this.router.navigate(['/question', question.id ]);
         } else {
             this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 1500 });
         }

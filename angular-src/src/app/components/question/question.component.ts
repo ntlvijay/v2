@@ -6,7 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Skills } from '../../services/skill.model';
 import { SkillsService } from '../../services/skills.service';
 import { Subscription } from 'rxjs';
-declare var jQuery:any;
+declare var jQuery: any;
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -15,12 +15,11 @@ declare var jQuery:any;
 export class QuestionComponent implements OnInit {
   editable: Boolean;
   question: any = [];
-  
   answerList: any = [];
   questionId: String;
   username: String;
   body: String;
-  skills : Skills[] = [];
+  skills: Skills[] = [];
   skillssub: Subscription;
   user_skills = [];
   dropdownList = [];

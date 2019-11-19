@@ -27,8 +27,8 @@ button{
 <div class="page-header">
 <div class="row">
   <div class="col-xs-6">
-      <div class="backbtn" style="text-align: left">
-          <a class="btn btn-primary btn-sm" [routerLink] = "['/discuss']" [queryParams] = "{ pn: 0 }" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Questions</a>
+      <div class="backbtn" style="text-align: left" >
+          <a class="btn btn-primary btn-sm" (click)="backQuestion()" ><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Questions</a>
           &nbsp;<button (click)="deleteQuestion()" class="btn btn-sm btn-danger delete-btn">{{deleteBtnText}}</button>
         </div>
   </div>
@@ -59,6 +59,7 @@ button{
 
 <div class = "col-sm-12"> <br>
     <label for="skills">Categories &nbsp;</label>
+    <div style="background-color: white">
     <ng-multiselect-dropdown
     [placeholder]="'Categories'"
     [data]="dropdownList"
@@ -71,6 +72,7 @@ button{
     name="multiselect"
     >
     </ng-multiselect-dropdown>
+    </div>
  </div>
 
      

@@ -1549,7 +1549,7 @@ RESPONSIVE
 
 a:hover{
  text-decoration: underline!important;  
- color: blue !important;
+ color:  #0000EE !important;
 }
 a:active {
    text-decoration: underline!important;

@@ -1626,3 +1626,17 @@ padding:0px 50px 50px 50px ;
   margin-right: 2px;
   /* height: 25px; */
 }
+
+
+.material-icons:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+}
+
+ .done:hover{
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+  color: darkgreen !important;
+}

@@ -39,8 +39,9 @@
                         <div class="blog-meta clearfix">
                            
                             <!-- <small><a [routerLink] ="['/blog', blog._id]" fragment="comments-section">{{question.answers || 0}} Comments</a></small> -->
-                            <small>Written On: {{ blog.modifiedDate | date }}</small>in: 
-                            <small><button class="btn btn-sm new"><span *ngFor='let tag of blog.tags'><a [routerLink] = "['/blogs']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} </a></span></button></small>
+                            <small>Posted by: <a>{{blog.username}}</a></small>
+                            <small>on: {{ blog.modifiedDate | date }}</small>
+                            <small>Tags: <button class="btn btn-sm new"><span *ngFor='let tag of blog.tags'><a [routerLink] = "['/blogs']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}} </a></span></button></small>
                         </div>
                     
                     </div>

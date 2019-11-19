@@ -20,15 +20,17 @@
             <div class="form-group">
               <label for="tags">Categories</label>
               <input type=text class="form-control" [(ngModel)] = "tag" name = "tag"/><br>
-              <button class="btn btn-primary btn-sm" (click) = 'addTag()'>Add Category</button>
+              <button  style="margin-left: 1px" class="btn btn-primary btn-sm" (click) = 'addTag()'>Add Category</button>
             </div>
             <div class="added-tags" *ngIf="tags.length > 0">
               <h5>Added Categories (click to remove )</h5>
-              <button class="tag-button btn btn-sm btn-info" *ngFor="let tag of tags" (click)="removeTag(tag)">{{tag}}</button>
+              <button style="margin-left: 1px" class="tag-button btn btn-sm btn-info" *ngFor="let tag of tags" (click)="removeTag(tag)">{{tag}}</button>
             </div>
             <h4>Description</h4>
             <editor (onEditorContentChange) = "tinyResponce($event)"></editor>
-            <button (click)="submitBlog()" class="btn btn-sm btn-primary submit-btn" type="submit">Submit</button>
+            <div style= "text-align: center">
+            <button (click)="submitBlog()" class="btn btn-sm btn-primary submit-btn" style= "width: 120px" type="submit">Submit</button>
+          </div>
           </form>
 
           
@@ -41,3 +43,6 @@
 </div>
 
 <sidebar-right></sidebar-right>
+
+
+

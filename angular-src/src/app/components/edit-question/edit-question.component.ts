@@ -44,6 +44,32 @@ export class EditQuestionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.skillService.getSkills();
+
+
+    this.skillssub = this.skillService.getPostUpdateListener()
+      .subscribe((skills: Skills[]) => {
+        this.skills = skills;
+        let tmp=[];
+        for(let i=0; i < skills.length; i++) {
+          tmp.push({ item_id: i, item_text: skills[i].skill_name });
+        }
+        this.dropdownList = tmp;
+        console.log(this.dropdownList);
+
+        this.dropdownSettings = {
+          singleSelection: false,
+          idField: 'item_id',
+          textField: 'item_text',
+          selectAllText: 'Select All',
+          unSelectAllText: 'UnSelect All',
+          itemsShowLimit: 3,
+          limitSelection: 3,
+          enableCheckAll: false
+        };
+
+      });
+
     this.deleteBtnText = 'Delete Question';
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.questionId = params['id'];
@@ -59,43 +85,32 @@ export class EditQuestionComponent implements OnInit {
           this.title = data.title;
           this.tags = data.tags;
           this.username = data.username;
+          console.log(this.tags);
+        console.log(this.title);
+        let tmp = [];
+            for(let i =0 ; i < this.dropdownList.length;i++){
+              if(this.tags.includes(this.dropdownList[i].item_text)){
+                tmp.push({item_id : this.dropdownList[i].item_id,
+                  item_text: this.dropdownList[i].item_text});
+              }
+            }
+            this.selectedItems = tmp;
         }
       )
     });
 
 
 
-    this.skillService.getSkills();
+   
 
-
-    this.skillssub = this.skillService.getPostUpdateListener()
-      .subscribe((skills: Skills[]) => {
-        this.skills = skills;
-        let tmp=[];
-        for(let i=0; i < skills.length; i++) {
-          tmp.push({ item_id: i, item_text: skills[i].skill_name });
-        }
-        this.dropdownList = tmp;
-        console.log(this.dropdownList);
-
-      });
-
-      this.dropdownSettings = {
-        singleSelection: false,
-        idField: 'item_id',
-        textField: 'item_text',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 3,
-        allowSearchFilter: true
-      };
+      
   }
 
 
   onItemSelect(item: any) {
     console.log('Select',item);
-     this.user_skills.push(item.item_text);
-     console.log('Select',this.user_skills);
+     this.tags.push(item.item_text);
+     console.log('Select',this.tags);
     //  console.log(this.user.username);
     console.log(this.selectedItems);
    }
@@ -104,23 +119,23 @@ export class EditQuestionComponent implements OnInit {
    {
      console.log('Testing Deselect');
      console.log('Deselect',item);
-     var index = this.user_skills.indexOf(item.item_text);
+     var index = this.tags.indexOf(item.item_text);
      console.log('Index',index);
-     this.user_skills.splice(index,1);
-     console.log('DeSelect',this.user_skills);
+     this.tags.splice(index,1);
+     console.log('DeSelect',this.tags);
  
    }
  
    onSelectAll(items: any) {
-     this.user_skills = [];
+     this.tags = [];
      for(var i=0;i<items.length;i++){
-       this.user_skills.push(items[i].item_text);
+       this.tags.push(items[i].item_text);
      }
-     console.log('onSelectAll',this.user_skills);
+     console.log('onSelectAll',this.tags);
      console.log('onSelectAll',items);
    }
    onItemDeSelectAll(items:any){
-     this.user_skills = [];
+     this.tags = [];
    }
 
 
@@ -153,10 +168,11 @@ export class EditQuestionComponent implements OnInit {
       title: this.title,
       id: this.questionId,
       question: this.newQuestion,
-      tags: this.user_skills,
+      tags: this.tags,
       username: this.username,
     }
-
+    console.log(this.title);
+    console.log(this.tags);
     this.discussService.editQuestion(question).subscribe(
       data => {
         if(data.success) {

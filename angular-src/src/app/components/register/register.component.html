@@ -34,7 +34,7 @@
 
                       <div class="col-sm-6">
                     <label for="username">Enter an Username:</label>
-                    <input type="text" class="form-control form-input" formControlName="username" [(ngModel)] = "username" id="username" name="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username" required>
+                    <input type="text" class="form-control form-input" formControlName="username" [(ngModel)] = "username" id="username" name="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username" maxlength="15" required>
                     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                       <div *ngIf="f.username.errors.required">Enter an Username for TechForum</div>
                   </div>

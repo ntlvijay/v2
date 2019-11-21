@@ -35,7 +35,7 @@
                     <h5><a [routerLink] = "['/users', question.username]"></a>{{question.username}}</h5>
                     <small class="online">Online</small>
                 </div> -->
-                <div class="col-sm-10">
+                <div class="col-sm-12">
                         <!-- <header class="topic-footer clearfix">
                             <ul class="list-inline tags">
                                 <li class="closed"><a href="#">Unanswered</a></li>
@@ -45,11 +45,11 @@
                        
       
                         <h4> <a style="color: black;" [routerLink] = "['/question', question._id ]" >{{question.title}}</a></h4>
-                        <div class="blog-meta clearfix">
+                        <div class="blog-meta clearfix" >
                             <small class="closed ans list-inline tags"><a href="#">{{question.type}}</a></small>
                             <small><a [routerLink] ="['/question', question._id ]" fragment="comments-section">{{question.answers || 0}} Comments</a></small>
-                            <small>{{ question.modifiedDate | date }} in: 
-                            <span *ngFor='let tag of question.tags'><button class="btn btn-sm"><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></button></span></small>
+                            <small>{{ question.modifiedDate | date }}</small> 
+                            <small>Categories:<span *ngFor='let tag of question.tags'><button class="btn btn-sm"><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></button></span></small>
                         </div>
                     
                     </div>

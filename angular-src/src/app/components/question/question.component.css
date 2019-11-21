@@ -1627,6 +1627,27 @@ padding:0px 50px 50px 50px ;
   /* height: 25px; */
 }
 
+ small:after,
+ a small:after {
+  content: "|";
+padding-right: 2px;
+}
+
+ small:last-child:after,
+a small:last-child:after {
+  content: "";
+  padding-left: 2px;
+  padding-right: 2px;
+}
+ small::after {
+  content: "|";
+  padding-right: -2px!important;
+  padding-left: 2px;
+}
+
+.blog-meta small:last-child:after {
+  content: "";
+}
 
 .material-icons:hover {
   -ms-transform: scale(1.5); /* IE 9 */

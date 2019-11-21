@@ -35,8 +35,8 @@ export class SearchComponent implements OnInit {
       pn: this.currentPage,
     }
 
-    if (this.search === "blogs") {
-      this.switchBtnText = "Search Questions";
+    if (this.search === 'blogs') {
+      this.switchBtnText = 'Search Questions';
       this.blogService.getBlogCount(searchInfo).subscribe(
         data => {
           this.searchCount = Number(data.count);
@@ -55,7 +55,7 @@ export class SearchComponent implements OnInit {
         });
     } else {
 
-      this.switchBtnText = "Search Blogs";
+      this.switchBtnText = 'Search Blogs';
       this.discussService.getQuestionCount(searchInfo).subscribe(
         data => {
           this.searchCount = Number(data.count);
@@ -78,10 +78,10 @@ export class SearchComponent implements OnInit {
 
 
    switchBtnFunc() {
-     if (this.switchBtnText === "Search Questions") {
-       this.router.navigate(['/search'], { queryParams: { search: "questions", searchString: this.searchString, pn: 0 }});
+     if (this.switchBtnText === 'Search Questions') {
+       this.router.navigate(['/search'], { queryParams: { search: 'questions', searchString: this.searchString, pn: 0 }});
      } else {
-       this.router.navigate(['/search'], { queryParams: { search: "blogs", searchString: this.searchString, pn: 0 }});
+       this.router.navigate(['/search'], { queryParams: { search: 'blogs', searchString: this.searchString, pn: 0 }});
      }
    }
 
@@ -90,15 +90,16 @@ export class SearchComponent implements OnInit {
       return false;
     }
     this.router.navigate(['/search'], { queryParams: { search: this.search, searchString: this.searchString, pn: this.currentPage - 1 } });
-     window.scrollTo(0,0);
+     window.scrollTo(0, 0);
    }
 
    nextPage() {
-     if (!(this.currentPage < Math.floor(this.searchCount/10))) {
+     if (!(this.currentPage < Math.floor(this.searchCount / 10))) {
        return false;
      }
+      // tslint:disable-next-line: max-line-length
       this.router.navigate(['/search'], { queryParams: { search: this.search, searchString: this.searchString, pn: this.currentPage + 1 } });
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
    }
 
    prevBtn() {
@@ -115,7 +116,7 @@ export class SearchComponent implements OnInit {
        'btn': true,
        'btn-sm': true,
        'btn-primary': true,
-       'disabled': !(this.currentPage < Math.floor(this.searchCount/10)),
+       'disabled': !(this.currentPage < Math.floor(this.searchCount / 10)),
      }
    }
 

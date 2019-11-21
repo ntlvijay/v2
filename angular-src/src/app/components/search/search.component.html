@@ -88,29 +88,68 @@
 
 
 
+
+
+
+
 <div class="blogs container">
   <div class="page-header row"><div class="col-sm-3"></div>
     <div class="col-sm-6" align="center">
       <h2>Search results for - " {{searchString}} "</h2>
     </div>
-    <div class="col-sm-6" style="text-align: center ;margin-left: 40px;">
-      <button class="btn btn-primary btn-sm switch-btn" (click)="switchBtnFunc()"><i class="fa fa-search" aria-hidden="true"></i> {{switchBtnText}}</button>
+    <div class="col-sm-6" style="text-align: center ;margin-left: 250px;">
+      <ul class="nav nav-tabs "  >
+        <li class="nav-item ">
+            <a style="color: white!important" (click)="switchBtnFunc()" class="nav-link " id="nav-questions-tab"  data-toggle="tab" href="#nav-questions">Search in Questions
+                <i class="fa fa-search"></i>
+            </a>
+        </li>
+        <li class="nav-item in active">
+            <a style="color: white!important" (click)="switchBtnFunc()" class="nav-link in active default" id="nav-blogs-tab" data-toggle="tab" href="#nav-blogs">Search in Blogs
+              <i class="fa fa-search"></i>
+            </a>
+        </li>
+    </ul>
+      <!-- <button class="btn btn-primary btn-sm switch-btn" (click)="switchBtnFunc()"><i class="fa fa-search" aria-hidden="true"></i> {{switchBtnText}}</button> -->
     </div>
   </div>
+
+
+
+
+
+
+  <div class="tab-content" id="nav-tabContent">
+
+    <div class="tab-pane active in" id="nav-blogs" role="tabpanel" aria-labelledby="nav-blogs-tab">
+
+
   <div *ngIf="search === 'blogs'">
     <h3 style="text-align: center">Blogs</h3>
     <div *ngIf="dataAvailable">
       <app-blog-list [blogList] = "searchList" [blogCount]="searchCount" [currentPage]="currentPage"></app-blog-list>
     </div>
   </div>
+    </div>
+
+
+    <div class="tab-pane fade " id="nav-questions" role="tabpanel" aria-labelledby="nav-questions-tab">  
+
   <div *ngIf="search === 'questions'">
     <h3 style="text-align: center" >Questions</h3>
     <div *ngIf="dataAvailable">
       <app-question-list [questionList] = "searchList" [questionCount]="searchCount" [currentPage]="currentPage"></app-question-list>
     </div>
   </div>
+    </div>
 
+
+
+  </div>
 </div>
+
+<br><br>
+<br>
 <div class="btn-controls" align="center">
   <button  [ngClass]="prevBtn()" (click)="prevPage()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Prev</button>
   <span>Page {{currentPage}}</span>

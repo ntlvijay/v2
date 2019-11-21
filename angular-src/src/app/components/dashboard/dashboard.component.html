@@ -96,7 +96,7 @@
                                     <small class="closed ans list-inline tags"><a href="#">{{question.type}}</a></small>
                                     <small><a [routerLink] ="['/question', question._id ]" fragment="comments-section">{{question.answers || 0}} Comments</a></small>
                                     <small>{{ question.modifiedDate | date }}</small>
-                                    <small>in: <span *ngFor='let tag of question.tags'><button class="btn btn-sm"><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></button></span></small>
+                                    <small>Categories: <span *ngFor='let tag of question.tags'><button class="btn btn-sm"><a [routerLink] = "['/discuss']" [queryParams] = "{ tag: tag, pn: 0 }">{{tag}}</a></button></span></small>
                                 </div>
                             
                             </div>
